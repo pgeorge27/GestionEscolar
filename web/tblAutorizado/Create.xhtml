@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblAutorizadoCreateDlg" widgetVar="TblAutorizadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTblAutorizadoTitle}">
+            <h:form id="TblAutorizadoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblAutorizadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTblAutorizadoLabel_idAutorizado}" for="idAutorizado" />
+                        <p:inputText id="idAutorizado" value="#{tblAutorizadoController.selected.idAutorizado}" title="#{bundle.CreateTblAutorizadoTitle_idAutorizado}" required="true" requiredMessage="#{bundle.CreateTblAutorizadoRequiredMessage_idAutorizado}"/>
+                        <p:outputLabel value="#{bundle.CreateTblAutorizadoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tblAutorizadoController.selected.nombre}" title="#{bundle.CreateTblAutorizadoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateTblAutorizadoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateTblAutorizadoLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{tblAutorizadoController.selected.apellido}" title="#{bundle.CreateTblAutorizadoTitle_apellido}" required="true" requiredMessage="#{bundle.CreateTblAutorizadoRequiredMessage_apellido}"/>
+                        <p:outputLabel value="#{bundle.CreateTblAutorizadoLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{tblAutorizadoController.selected.foto}" title="#{bundle.CreateTblAutorizadoTitle_foto}" />
+                        <p:outputLabel value="#{bundle.CreateTblAutorizadoLabel_idParentesco}" for="idParentesco" />
+                        <p:selectOneMenu id="idParentesco" value="#{tblAutorizadoController.selected.idParentesco}" required="true" requiredMessage="#{bundle.EditTblAutorizadoRequiredMessage_idParentesco}">
+                            <f:selectItems value="#{tlbParentescoController.itemsAvailableSelectOne}"
+                                           var="idParentescoItem"
+                                           itemValue="#{idParentescoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblAutorizadoController.create}" value="#{bundle.Save}" update="display,:TblAutorizadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TblAutorizadoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblAutorizadoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -14,42 +14,38 @@
                     <p:panelGrid columns="2" rendered="#{tblRepresentanteController.selected != null}">
                         <h:outputText value="#{bundle.ViewTblRepresentanteLabel_idRepresentante}"/>
                         <h:outputText value="#{tblRepresentanteController.selected.idRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_idRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_apellidosRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.apellidosRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_apellidosRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_nombresRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.nombresRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_nombresRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_edadRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.edadRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_edadRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_estadoCivilRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.estadoCivilRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_estadoCivilRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_cedulaRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.cedulaRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_cedulaRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_nacionalidadRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.nacionalidadRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_nacionalidadRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_fechNacRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.fechNacRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_fechNacRepresentante}">
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_apellidos}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.apellidos}" title="#{bundle.ViewTblRepresentanteTitle_apellidos}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_nombres}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.nombres}" title="#{bundle.ViewTblRepresentanteTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_edad}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.edad}" title="#{bundle.ViewTblRepresentanteTitle_edad}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_estadoCivil}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.estadoCivil}" title="#{bundle.ViewTblRepresentanteTitle_estadoCivil}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_cedula}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.cedula}" title="#{bundle.ViewTblRepresentanteTitle_cedula}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_nacionalidad}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.nacionalidad}" title="#{bundle.ViewTblRepresentanteTitle_nacionalidad}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_fechNac}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.fechNac}" title="#{bundle.ViewTblRepresentanteTitle_fechNac}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_dirHabRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.dirHabRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_dirHabRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_profesionRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.profesionRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_profesionRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_lugarTrabRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.lugarTrabRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_lugarTrabRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_dirTrabRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.dirTrabRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_dirTrabRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_tlfTrabRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.tlfTrabRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_tlfTrabRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_tlfHabRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.tlfHabRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_tlfHabRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_tlfCelRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.tlfCelRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_tlfCelRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_fotoRepresentante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.fotoRepresentante}" title="#{bundle.ViewTblRepresentanteTitle_fotoRepresentante}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_parentesco}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.parentesco}" title="#{bundle.ViewTblRepresentanteTitle_parentesco}"/>
-                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_idEstudiante}"/>
-                        <h:outputText value="#{tblRepresentanteController.selected.idEstudiante}" title="#{bundle.ViewTblRepresentanteTitle_idEstudiante}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_dirHab}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.dirHab}" title="#{bundle.ViewTblRepresentanteTitle_dirHab}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_profesion}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.profesion}" title="#{bundle.ViewTblRepresentanteTitle_profesion}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_lugarTrab}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.lugarTrab}" title="#{bundle.ViewTblRepresentanteTitle_lugarTrab}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_dirTrab}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.dirTrab}" title="#{bundle.ViewTblRepresentanteTitle_dirTrab}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_tlfTrab}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.tlfTrab}" title="#{bundle.ViewTblRepresentanteTitle_tlfTrab}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_tlfHab}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.tlfHab}" title="#{bundle.ViewTblRepresentanteTitle_tlfHab}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_tlfCel}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.tlfCel}" title="#{bundle.ViewTblRepresentanteTitle_tlfCel}"/>
+                        <h:outputText value="#{bundle.ViewTblRepresentanteLabel_foto}"/>
+                        <h:outputText value="#{tblRepresentanteController.selected.foto}" title="#{bundle.ViewTblRepresentanteTitle_foto}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="TblRepresentanteViewDialog.hide()"/>
                 </h:panelGroup>

@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Entidades.TlbParentesco;
+import Entidades.TblAutorizado;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author georgeperez
  */
 @Stateless
-public class TlbParentescoFacade extends AbstractFacade<TlbParentesco> {
+public class TblAutorizadoFacade extends AbstractFacade<TblAutorizado> {
     @PersistenceContext(unitName = "Gestion_EscolarPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class TlbParentescoFacade extends AbstractFacade<TlbParentesco> {
         return em;
     }
 
-    public TlbParentescoFacade() {
-        super(TlbParentesco.class);
+    public TblAutorizadoFacade() {
+        super(TblAutorizado.class);
     }
     
 }

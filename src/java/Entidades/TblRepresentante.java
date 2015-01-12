@@ -7,26 +7,28 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author indra
+ * @author georgeperez
  */
 @Entity
 @Table(name = "tbl_representante")
@@ -34,21 +36,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "TblRepresentante.findAll", query = "SELECT t FROM TblRepresentante t"),
     @NamedQuery(name = "TblRepresentante.findByIdRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.idRepresentante = :idRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByApellidosRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.apellidosRepresentante = :apellidosRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByNombresRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.nombresRepresentante = :nombresRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByEdadRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.edadRepresentante = :edadRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByEstadoCivilRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.estadoCivilRepresentante = :estadoCivilRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByCedulaRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.cedulaRepresentante = :cedulaRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByNacionalidadRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.nacionalidadRepresentante = :nacionalidadRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByFechNacRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.fechNacRepresentante = :fechNacRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByDirHabRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.dirHabRepresentante = :dirHabRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByProfesionRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.profesionRepresentante = :profesionRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByLugarTrabRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.lugarTrabRepresentante = :lugarTrabRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByDirTrabRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.dirTrabRepresentante = :dirTrabRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByTlfTrabRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.tlfTrabRepresentante = :tlfTrabRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByTlfHabRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.tlfHabRepresentante = :tlfHabRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByTlfCelRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.tlfCelRepresentante = :tlfCelRepresentante"),
-    @NamedQuery(name = "TblRepresentante.findByFotoRepresentante", query = "SELECT t FROM TblRepresentante t WHERE t.fotoRepresentante = :fotoRepresentante")})
+    @NamedQuery(name = "TblRepresentante.findByApellidos", query = "SELECT t FROM TblRepresentante t WHERE t.apellidos = :apellidos"),
+    @NamedQuery(name = "TblRepresentante.findByNombres", query = "SELECT t FROM TblRepresentante t WHERE t.nombres = :nombres"),
+    @NamedQuery(name = "TblRepresentante.findByEdad", query = "SELECT t FROM TblRepresentante t WHERE t.edad = :edad"),
+    @NamedQuery(name = "TblRepresentante.findByEstadoCivil", query = "SELECT t FROM TblRepresentante t WHERE t.estadoCivil = :estadoCivil"),
+    @NamedQuery(name = "TblRepresentante.findByCedula", query = "SELECT t FROM TblRepresentante t WHERE t.cedula = :cedula"),
+    @NamedQuery(name = "TblRepresentante.findByNacionalidad", query = "SELECT t FROM TblRepresentante t WHERE t.nacionalidad = :nacionalidad"),
+    @NamedQuery(name = "TblRepresentante.findByFechNac", query = "SELECT t FROM TblRepresentante t WHERE t.fechNac = :fechNac"),
+    @NamedQuery(name = "TblRepresentante.findByDirHab", query = "SELECT t FROM TblRepresentante t WHERE t.dirHab = :dirHab"),
+    @NamedQuery(name = "TblRepresentante.findByProfesion", query = "SELECT t FROM TblRepresentante t WHERE t.profesion = :profesion"),
+    @NamedQuery(name = "TblRepresentante.findByLugarTrab", query = "SELECT t FROM TblRepresentante t WHERE t.lugarTrab = :lugarTrab"),
+    @NamedQuery(name = "TblRepresentante.findByDirTrab", query = "SELECT t FROM TblRepresentante t WHERE t.dirTrab = :dirTrab"),
+    @NamedQuery(name = "TblRepresentante.findByTlfTrab", query = "SELECT t FROM TblRepresentante t WHERE t.tlfTrab = :tlfTrab"),
+    @NamedQuery(name = "TblRepresentante.findByTlfHab", query = "SELECT t FROM TblRepresentante t WHERE t.tlfHab = :tlfHab"),
+    @NamedQuery(name = "TblRepresentante.findByTlfCel", query = "SELECT t FROM TblRepresentante t WHERE t.tlfCel = :tlfCel"),
+    @NamedQuery(name = "TblRepresentante.findByFoto", query = "SELECT t FROM TblRepresentante t WHERE t.foto = :foto")})
 public class TblRepresentante implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -59,83 +61,81 @@ public class TblRepresentante implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
-    @Column(name = "apellidos_representante")
-    private String apellidosRepresentante;
+    @Column(name = "apellidos")
+    private String apellidos;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
-    @Column(name = "nombres_representante")
-    private String nombresRepresentante;
+    @Column(name = "nombres")
+    private String nombres;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "edad_representante")
-    private int edadRepresentante;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "estado_civil_representante")
-    private String estadoCivilRepresentante;
+    @Column(name = "edad")
+    private int edad;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "cedula_representante")
-    private String cedulaRepresentante;
+    @Column(name = "estado_civil")
+    private String estadoCivil;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "cedula")
+    private String cedula;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "nacionalidad_representante")
-    private String nacionalidadRepresentante;
+    @Column(name = "nacionalidad")
+    private String nacionalidad;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fech_nac_representante")
+    @Column(name = "fech_nac")
     @Temporal(TemporalType.DATE)
-    private Date fechNacRepresentante;
+    private Date fechNac;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 250)
-    @Column(name = "dir_hab_representante")
-    private String dirHabRepresentante;
+    @Column(name = "dir_hab")
+    private String dirHab;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "profesion_representante")
-    private String profesionRepresentante;
+    @Column(name = "profesion")
+    private String profesion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 250)
-    @Column(name = "lugar_trab_representante")
-    private String lugarTrabRepresentante;
+    @Column(name = "lugar_trab")
+    private String lugarTrab;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 250)
-    @Column(name = "dir_trab_representante")
-    private String dirTrabRepresentante;
+    @Column(name = "dir_trab")
+    private String dirTrab;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "tlf_trab_representante")
-    private String tlfTrabRepresentante;
+    @Column(name = "tlf_trab")
+    private String tlfTrab;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "tlf_hab_representante")
-    private String tlfHabRepresentante;
+    @Column(name = "tlf_hab")
+    private String tlfHab;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "tlf_cel_representante")
-    private String tlfCelRepresentante;
+    @Column(name = "tlf_cel")
+    private String tlfCel;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "foto_representante")
-    private String fotoRepresentante;
-    @JoinColumn(name = "parentesco", referencedColumnName = "id_parentesco")
-    @ManyToOne(optional = false)
-    private TlbParentesco parentesco;
-    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
-    @ManyToOne(optional = false)
-    private TblEstudiante idEstudiante;
+    @Column(name = "foto")
+    private String foto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRepresentanteM")
+    private List<TblEstudiante> tblEstudianteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRepresentanteP")
+    private List<TblEstudiante> tblEstudianteList1;
 
     public TblRepresentante() {
     }
@@ -144,23 +144,23 @@ public class TblRepresentante implements Serializable {
         this.idRepresentante = idRepresentante;
     }
 
-    public TblRepresentante(Integer idRepresentante, String apellidosRepresentante, String nombresRepresentante, int edadRepresentante, String estadoCivilRepresentante, String cedulaRepresentante, String nacionalidadRepresentante, Date fechNacRepresentante, String dirHabRepresentante, String profesionRepresentante, String lugarTrabRepresentante, String dirTrabRepresentante, String tlfTrabRepresentante, String tlfHabRepresentante, String tlfCelRepresentante, String fotoRepresentante) {
+    public TblRepresentante(Integer idRepresentante, String apellidos, String nombres, int edad, String estadoCivil, String cedula, String nacionalidad, Date fechNac, String dirHab, String profesion, String lugarTrab, String dirTrab, String tlfTrab, String tlfHab, String tlfCel, String foto) {
         this.idRepresentante = idRepresentante;
-        this.apellidosRepresentante = apellidosRepresentante;
-        this.nombresRepresentante = nombresRepresentante;
-        this.edadRepresentante = edadRepresentante;
-        this.estadoCivilRepresentante = estadoCivilRepresentante;
-        this.cedulaRepresentante = cedulaRepresentante;
-        this.nacionalidadRepresentante = nacionalidadRepresentante;
-        this.fechNacRepresentante = fechNacRepresentante;
-        this.dirHabRepresentante = dirHabRepresentante;
-        this.profesionRepresentante = profesionRepresentante;
-        this.lugarTrabRepresentante = lugarTrabRepresentante;
-        this.dirTrabRepresentante = dirTrabRepresentante;
-        this.tlfTrabRepresentante = tlfTrabRepresentante;
-        this.tlfHabRepresentante = tlfHabRepresentante;
-        this.tlfCelRepresentante = tlfCelRepresentante;
-        this.fotoRepresentante = fotoRepresentante;
+        this.apellidos = apellidos;
+        this.nombres = nombres;
+        this.edad = edad;
+        this.estadoCivil = estadoCivil;
+        this.cedula = cedula;
+        this.nacionalidad = nacionalidad;
+        this.fechNac = fechNac;
+        this.dirHab = dirHab;
+        this.profesion = profesion;
+        this.lugarTrab = lugarTrab;
+        this.dirTrab = dirTrab;
+        this.tlfTrab = tlfTrab;
+        this.tlfHab = tlfHab;
+        this.tlfCel = tlfCel;
+        this.foto = foto;
     }
 
     public Integer getIdRepresentante() {
@@ -171,140 +171,142 @@ public class TblRepresentante implements Serializable {
         this.idRepresentante = idRepresentante;
     }
 
-    public String getApellidosRepresentante() {
-        return apellidosRepresentante;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellidosRepresentante(String apellidosRepresentante) {
-        this.apellidosRepresentante = apellidosRepresentante;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
-    public String getNombresRepresentante() {
-        return nombresRepresentante;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombresRepresentante(String nombresRepresentante) {
-        this.nombresRepresentante = nombresRepresentante;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public int getEdadRepresentante() {
-        return edadRepresentante;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setEdadRepresentante(int edadRepresentante) {
-        this.edadRepresentante = edadRepresentante;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public String getEstadoCivilRepresentante() {
-        return estadoCivilRepresentante;
+    public String getEstadoCivil() {
+        return estadoCivil;
     }
 
-    public void setEstadoCivilRepresentante(String estadoCivilRepresentante) {
-        this.estadoCivilRepresentante = estadoCivilRepresentante;
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 
-    public String getCedulaRepresentante() {
-        return cedulaRepresentante;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setCedulaRepresentante(String cedulaRepresentante) {
-        this.cedulaRepresentante = cedulaRepresentante;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
-    public String getNacionalidadRepresentante() {
-        return nacionalidadRepresentante;
+    public String getNacionalidad() {
+        return nacionalidad;
     }
 
-    public void setNacionalidadRepresentante(String nacionalidadRepresentante) {
-        this.nacionalidadRepresentante = nacionalidadRepresentante;
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
     }
 
-    public Date getFechNacRepresentante() {
-        return fechNacRepresentante;
+    public Date getFechNac() {
+        return fechNac;
     }
 
-    public void setFechNacRepresentante(Date fechNacRepresentante) {
-        this.fechNacRepresentante = fechNacRepresentante;
+    public void setFechNac(Date fechNac) {
+        this.fechNac = fechNac;
     }
 
-    public String getDirHabRepresentante() {
-        return dirHabRepresentante;
+    public String getDirHab() {
+        return dirHab;
     }
 
-    public void setDirHabRepresentante(String dirHabRepresentante) {
-        this.dirHabRepresentante = dirHabRepresentante;
+    public void setDirHab(String dirHab) {
+        this.dirHab = dirHab;
     }
 
-    public String getProfesionRepresentante() {
-        return profesionRepresentante;
+    public String getProfesion() {
+        return profesion;
     }
 
-    public void setProfesionRepresentante(String profesionRepresentante) {
-        this.profesionRepresentante = profesionRepresentante;
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
     }
 
-    public String getLugarTrabRepresentante() {
-        return lugarTrabRepresentante;
+    public String getLugarTrab() {
+        return lugarTrab;
     }
 
-    public void setLugarTrabRepresentante(String lugarTrabRepresentante) {
-        this.lugarTrabRepresentante = lugarTrabRepresentante;
+    public void setLugarTrab(String lugarTrab) {
+        this.lugarTrab = lugarTrab;
     }
 
-    public String getDirTrabRepresentante() {
-        return dirTrabRepresentante;
+    public String getDirTrab() {
+        return dirTrab;
     }
 
-    public void setDirTrabRepresentante(String dirTrabRepresentante) {
-        this.dirTrabRepresentante = dirTrabRepresentante;
+    public void setDirTrab(String dirTrab) {
+        this.dirTrab = dirTrab;
     }
 
-    public String getTlfTrabRepresentante() {
-        return tlfTrabRepresentante;
+    public String getTlfTrab() {
+        return tlfTrab;
     }
 
-    public void setTlfTrabRepresentante(String tlfTrabRepresentante) {
-        this.tlfTrabRepresentante = tlfTrabRepresentante;
+    public void setTlfTrab(String tlfTrab) {
+        this.tlfTrab = tlfTrab;
     }
 
-    public String getTlfHabRepresentante() {
-        return tlfHabRepresentante;
+    public String getTlfHab() {
+        return tlfHab;
     }
 
-    public void setTlfHabRepresentante(String tlfHabRepresentante) {
-        this.tlfHabRepresentante = tlfHabRepresentante;
+    public void setTlfHab(String tlfHab) {
+        this.tlfHab = tlfHab;
     }
 
-    public String getTlfCelRepresentante() {
-        return tlfCelRepresentante;
+    public String getTlfCel() {
+        return tlfCel;
     }
 
-    public void setTlfCelRepresentante(String tlfCelRepresentante) {
-        this.tlfCelRepresentante = tlfCelRepresentante;
+    public void setTlfCel(String tlfCel) {
+        this.tlfCel = tlfCel;
     }
 
-    public String getFotoRepresentante() {
-        return fotoRepresentante;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setFotoRepresentante(String fotoRepresentante) {
-        this.fotoRepresentante = fotoRepresentante;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
-    public TlbParentesco getParentesco() {
-        return parentesco;
+    @XmlTransient
+    public List<TblEstudiante> getTblEstudianteList() {
+        return tblEstudianteList;
     }
 
-    public void setParentesco(TlbParentesco parentesco) {
-        this.parentesco = parentesco;
+    public void setTblEstudianteList(List<TblEstudiante> tblEstudianteList) {
+        this.tblEstudianteList = tblEstudianteList;
     }
 
-    public TblEstudiante getIdEstudiante() {
-        return idEstudiante;
+    @XmlTransient
+    public List<TblEstudiante> getTblEstudianteList1() {
+        return tblEstudianteList1;
     }
 
-    public void setIdEstudiante(TblEstudiante idEstudiante) {
-        this.idEstudiante = idEstudiante;
+    public void setTblEstudianteList1(List<TblEstudiante> tblEstudianteList1) {
+        this.tblEstudianteList1 = tblEstudianteList1;
     }
 
     @Override

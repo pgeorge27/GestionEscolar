@@ -123,12 +123,6 @@
                             </f:facet>
                             <h:outputText value="#{item.observacionPicadas}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_idEstudiante}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idEstudiante}"/>
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tblMedicamentosController.prepareCreate}" update=":TblMedicamentosCreateForm" oncomplete="PF('TblMedicamentosCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TblMedicamentosViewForm" oncomplete="PF('TblMedicamentosViewDialog').show()" disabled="#{empty tblMedicamentosController.selected}"/>

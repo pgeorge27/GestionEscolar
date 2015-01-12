@@ -6,24 +6,26 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author indra
+ * @author georgeperez
  */
 @Entity
 @Table(name = "tbl_medicamentos")
@@ -118,9 +120,8 @@ public class TblMedicamentos implements Serializable {
     @Size(min = 1, max = 250)
     @Column(name = "observacion_picadas")
     private String observacionPicadas;
-    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
-    @ManyToOne(optional = false)
-    private TblEstudiante idEstudiante;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMedicamentos")
+    private List<TblEstudiante> tblEstudianteList;
 
     public TblMedicamentos() {
     }
@@ -276,12 +277,13 @@ public class TblMedicamentos implements Serializable {
         this.observacionPicadas = observacionPicadas;
     }
 
-    public TblEstudiante getIdEstudiante() {
-        return idEstudiante;
+    @XmlTransient
+    public List<TblEstudiante> getTblEstudianteList() {
+        return tblEstudianteList;
     }
 
-    public void setIdEstudiante(TblEstudiante idEstudiante) {
-        this.idEstudiante = idEstudiante;
+    public void setTblEstudianteList(List<TblEstudiante> tblEstudianteList) {
+        this.tblEstudianteList = tblEstudianteList;
     }
 
     @Override

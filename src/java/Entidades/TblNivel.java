@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author indra
+ * @author georgeperez
  */
 @Entity
 @Table(name = "tbl_nivel")
@@ -123,7 +123,7 @@ public class TblNivel implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TblNivel[ idNivel=" + idNivel + " ]";
+        return nombre;
     }
     
 }

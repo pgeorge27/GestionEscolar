@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author indra
+ * @author georgeperez
  */
 @Entity
 @Table(name = "tlb_parentesco")
@@ -46,8 +46,8 @@ public class TlbParentesco implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentesco")
-    private List<TblRepresentante> tblRepresentanteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idParentesco")
+    private List<TblAutorizado> tblAutorizadoList;
 
     public TlbParentesco() {
     }
@@ -78,12 +78,12 @@ public class TlbParentesco implements Serializable {
     }
 
     @XmlTransient
-    public List<TblRepresentante> getTblRepresentanteList() {
-        return tblRepresentanteList;
+    public List<TblAutorizado> getTblAutorizadoList() {
+        return tblAutorizadoList;
     }
 
-    public void setTblRepresentanteList(List<TblRepresentante> tblRepresentanteList) {
-        this.tblRepresentanteList = tblRepresentanteList;
+    public void setTblAutorizadoList(List<TblAutorizado> tblAutorizadoList) {
+        this.tblAutorizadoList = tblAutorizadoList;
     }
 
     @Override
@@ -108,7 +108,7 @@ public class TlbParentesco implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TlbParentesco[ idParentesco=" + idParentesco + " ]";
+        return nombre;
     }
     
 }

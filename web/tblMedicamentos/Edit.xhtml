@@ -44,13 +44,6 @@
                         <p:inputText id="periodoPicadas" value="#{tblMedicamentosController.selected.periodoPicadas}" title="#{bundle.EditTblMedicamentosTitle_periodoPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_periodoPicadas}"/>
                         <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_observacionPicadas}" for="observacionPicadas" />
                         <p:inputText id="observacionPicadas" value="#{tblMedicamentosController.selected.observacionPicadas}" title="#{bundle.EditTblMedicamentosTitle_observacionPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_observacionPicadas}"/>
-                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_idEstudiante}" for="idEstudiante" />
-                        <p:selectOneMenu id="idEstudiante" value="#{tblMedicamentosController.selected.idEstudiante}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_idEstudiante}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{tblEstudianteController.itemsAvailableSelectOne}"
-                                           var="idEstudianteItem"
-                                           itemValue="#{idEstudianteItem}"/>
-                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tblMedicamentosController.update}" value="#{bundle.Save}" update="display,:TblMedicamentosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TblMedicamentosEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="TblMedicamentosEditDialog.hide()"/>

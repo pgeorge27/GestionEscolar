@@ -12,14 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("tblCursosController")
+@ManagedBean(name = "tblCursosController")
 @SessionScoped
 public class TblCursosController implements Serializable {
 
@@ -109,10 +109,6 @@ public class TblCursosController implements Serializable {
         }
     }
 
-    public TblCursos getTblCursos(java.lang.Integer id) {
-        return getFacade().find(id);
-    }
-
     public List<TblCursos> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -121,7 +117,7 @@ public class TblCursosController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = TblCursos.class)
+    @FacesConverter(value = "TblCursosControllerConverter", forClass = TblCursos.class)
     public static class TblCursosControllerConverter implements Converter {
 
         @Override
@@ -131,7 +127,7 @@ public class TblCursosController implements Serializable {
             }
             TblCursosController controller = (TblCursosController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "tblCursosController");
-            return controller.getTblCursos(getKey(value));
+            return controller.getFacade().find(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {

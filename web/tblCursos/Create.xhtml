@@ -5,9 +5,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    
-    <ui:composition template="/template.xhtml">
-        <ui:define name="body">
+
+    <ui:composition>
+
+        <p:dialog id="TblCursosCreateDlg" widgetVar="TblCursosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTblCursosTitle}">
             <h:form id="TblCursosCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tblCursosController.selected != null}">
@@ -18,10 +19,11 @@
                         <p:outputLabel value="#{bundle.CreateTblCursosLabel_precio}" for="precio" />
                         <p:inputText id="precio" value="#{tblCursosController.selected.precio}" title="#{bundle.CreateTblCursosTitle_precio}" required="true" requiredMessage="#{bundle.CreateTblCursosRequiredMessage_precio}"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{tblCursosController.create}" value="#{bundle.Save}" update="display,:growl" oncomplete="handleSubmit(args,'TblCursosCreateDialog');"/>
+                    <p:commandButton actionListener="#{tblCursosController.create}" value="#{bundle.Save}" update="display,:TblCursosListForm:datalist,:growl" oncomplete="handleSubmit(args,'TblCursosCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="TblCursosCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
-        </ui:define>
+        </p:dialog>
+
     </ui:composition>
 </html>

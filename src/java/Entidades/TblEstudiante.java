@@ -6,18 +6,21 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author indra
+ * @author georgeperez
  */
 @Entity
 @Table(name = "tbl_estudiante")
@@ -36,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "TblEstudiante.findAll", query = "SELECT t FROM TblEstudiante t"),
     @NamedQuery(name = "TblEstudiante.findByIdEstudiante", query = "SELECT t FROM TblEstudiante t WHERE t.idEstudiante = :idEstudiante"),
+    @NamedQuery(name = "TblEstudiante.findByFoto", query = "SELECT t FROM TblEstudiante t WHERE t.foto = :foto"),
     @NamedQuery(name = "TblEstudiante.findByApellidos", query = "SELECT t FROM TblEstudiante t WHERE t.apellidos = :apellidos"),
     @NamedQuery(name = "TblEstudiante.findByNombres", query = "SELECT t FROM TblEstudiante t WHERE t.nombres = :nombres"),
     @NamedQuery(name = "TblEstudiante.findByLugarNac", query = "SELECT t FROM TblEstudiante t WHERE t.lugarNac = :lugarNac"),
@@ -44,16 +48,20 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TblEstudiante.findBySexo", query = "SELECT t FROM TblEstudiante t WHERE t.sexo = :sexo"),
     @NamedQuery(name = "TblEstudiante.findByVacunas", query = "SELECT t FROM TblEstudiante t WHERE t.vacunas = :vacunas"),
     @NamedQuery(name = "TblEstudiante.findByPeso", query = "SELECT t FROM TblEstudiante t WHERE t.peso = :peso"),
-    @NamedQuery(name = "TblEstudiante.findByFoto", query = "SELECT t FROM TblEstudiante t WHERE t.foto = :foto"),
     @NamedQuery(name = "TblEstudiante.findByStatus", query = "SELECT t FROM TblEstudiante t WHERE t.status = :status"),
     @NamedQuery(name = "TblEstudiante.findByFechRegistro", query = "SELECT t FROM TblEstudiante t WHERE t.fechRegistro = :fechRegistro")})
 public class TblEstudiante implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id_estudiante")
     private Integer idEstudiante;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "foto")
+    private String foto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
@@ -94,36 +102,49 @@ public class TblEstudiante implements Serializable {
     private int peso;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "foto")
-    private String foto;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "status")
-    private String status;
+    private boolean status;
     @Column(name = "fech_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechRegistro;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
-    private List<TblRepresentante> tblRepresentanteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
-    private List<TblMedicamentos> tblMedicamentosList;
+    @JoinTable(name = "tbl_estudiante_cursos", joinColumns = {
+        @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_cursos", referencedColumnName = "id_curso")})
+    @ManyToMany
+    private List<TblCursos> tblCursosList;
+    @JoinColumn(name = "id_representante_m", referencedColumnName = "id_representante")
+    @ManyToOne(optional = false)
+    private TblRepresentante idRepresentanteM;
+    @JoinColumn(name = "id_representante_p", referencedColumnName = "id_representante")
+    @ManyToOne(optional = false)
+    private TblRepresentante idRepresentanteP;
+    @JoinColumn(name = "id_autorizado", referencedColumnName = "id_autorizado")
+    @ManyToOne(optional = false)
+    private TblAutorizado idAutorizado;
+    @JoinColumn(name = "id_medicamentos", referencedColumnName = "id_medicamentos")
+    @ManyToOne(optional = false)
+    private TblMedicamentos idMedicamentos;
     @JoinColumn(name = "id_nivel", referencedColumnName = "id_nivel")
     @ManyToOne(optional = false)
     private TblNivel idNivel;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
-    private List<TblEstudianteCursos> tblEstudianteCursosList;
 
     public TblEstudiante() {
+        this.fechRegistro = new Date();
+        idRepresentanteM = new TblRepresentante();
+        idRepresentanteP = new TblRepresentante();
+        idAutorizado = new TblAutorizado();
+        idMedicamentos = new TblMedicamentos();
+        idNivel = new TblNivel();
+        tblCursosList = new ArrayList<>();
     }
 
     public TblEstudiante(Integer idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 
-    public TblEstudiante(Integer idEstudiante, String apellidos, String nombres, String lugarNac, Date fechNac, int edad, String sexo, String vacunas, int peso, String foto, String status) {
+    public TblEstudiante(Integer idEstudiante, String foto, String apellidos, String nombres, String lugarNac, Date fechNac, int edad, String sexo, String vacunas, int peso, boolean status) {
         this.idEstudiante = idEstudiante;
+        this.foto = foto;
         this.apellidos = apellidos;
         this.nombres = nombres;
         this.lugarNac = lugarNac;
@@ -132,7 +153,6 @@ public class TblEstudiante implements Serializable {
         this.sexo = sexo;
         this.vacunas = vacunas;
         this.peso = peso;
-        this.foto = foto;
         this.status = status;
     }
 
@@ -142,6 +162,14 @@ public class TblEstudiante implements Serializable {
 
     public void setIdEstudiante(Integer idEstudiante) {
         this.idEstudiante = idEstudiante;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getApellidos() {
@@ -208,19 +236,11 @@ public class TblEstudiante implements Serializable {
         this.peso = peso;
     }
 
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -233,21 +253,44 @@ public class TblEstudiante implements Serializable {
     }
 
     @XmlTransient
-    public List<TblRepresentante> getTblRepresentanteList() {
-        return tblRepresentanteList;
+    public List<TblCursos> getTblCursosList() {
+        return tblCursosList;
     }
 
-    public void setTblRepresentanteList(List<TblRepresentante> tblRepresentanteList) {
-        this.tblRepresentanteList = tblRepresentanteList;
+    public void setTblCursosList(List<TblCursos> tblCursosList) {
+        this.tblCursosList = tblCursosList;
     }
 
-    @XmlTransient
-    public List<TblMedicamentos> getTblMedicamentosList() {
-        return tblMedicamentosList;
+    public TblRepresentante getIdRepresentanteM() {
+        return idRepresentanteM;
     }
 
-    public void setTblMedicamentosList(List<TblMedicamentos> tblMedicamentosList) {
-        this.tblMedicamentosList = tblMedicamentosList;
+    public void setIdRepresentanteM(TblRepresentante idRepresentanteM) {
+        this.idRepresentanteM = idRepresentanteM;
+    }
+
+    public TblRepresentante getIdRepresentanteP() {
+        return idRepresentanteP;
+    }
+
+    public void setIdRepresentanteP(TblRepresentante idRepresentanteP) {
+        this.idRepresentanteP = idRepresentanteP;
+    }
+
+    public TblAutorizado getIdAutorizado() {
+        return idAutorizado;
+    }
+
+    public void setIdAutorizado(TblAutorizado idAutorizado) {
+        this.idAutorizado = idAutorizado;
+    }
+
+    public TblMedicamentos getIdMedicamentos() {
+        return idMedicamentos;
+    }
+
+    public void setIdMedicamentos(TblMedicamentos idMedicamentos) {
+        this.idMedicamentos = idMedicamentos;
     }
 
     public TblNivel getIdNivel() {
@@ -256,15 +299,6 @@ public class TblEstudiante implements Serializable {
 
     public void setIdNivel(TblNivel idNivel) {
         this.idNivel = idNivel;
-    }
-
-    @XmlTransient
-    public List<TblEstudianteCursos> getTblEstudianteCursosList() {
-        return tblEstudianteCursosList;
-    }
-
-    public void setTblEstudianteCursosList(List<TblEstudianteCursos> tblEstudianteCursosList) {
-        this.tblEstudianteCursosList = tblEstudianteCursosList;
     }
 
     @Override

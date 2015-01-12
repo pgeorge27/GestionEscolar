@@ -14,6 +14,8 @@
                     <p:panelGrid columns="2" rendered="#{tblEstudianteController.selected != null}">
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_idEstudiante}"/>
                         <h:outputText value="#{tblEstudianteController.selected.idEstudiante}" title="#{bundle.ViewTblEstudianteTitle_idEstudiante}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_foto}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.foto}" title="#{bundle.ViewTblEstudianteTitle_foto}"/>
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_apellidos}"/>
                         <h:outputText value="#{tblEstudianteController.selected.apellidos}" title="#{bundle.ViewTblEstudianteTitle_apellidos}"/>
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_nombres}"/>
@@ -32,14 +34,20 @@
                         <h:outputText value="#{tblEstudianteController.selected.vacunas}" title="#{bundle.ViewTblEstudianteTitle_vacunas}"/>
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_peso}"/>
                         <h:outputText value="#{tblEstudianteController.selected.peso}" title="#{bundle.ViewTblEstudianteTitle_peso}"/>
-                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_foto}"/>
-                        <h:outputText value="#{tblEstudianteController.selected.foto}" title="#{bundle.ViewTblEstudianteTitle_foto}"/>
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_status}"/>
-                        <h:outputText value="#{tblEstudianteController.selected.status}" title="#{bundle.ViewTblEstudianteTitle_status}"/>
+                        <p:selectBooleanCheckbox value="#{tblEstudianteController.selected.status}" disabled="true"/>
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_fechRegistro}"/>
                         <h:outputText value="#{tblEstudianteController.selected.fechRegistro}" title="#{bundle.ViewTblEstudianteTitle_fechRegistro}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_idRepresentanteM}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.idRepresentanteM}" title="#{bundle.ViewTblEstudianteTitle_idRepresentanteM}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_idRepresentanteP}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.idRepresentanteP}" title="#{bundle.ViewTblEstudianteTitle_idRepresentanteP}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_idAutorizado}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.idAutorizado}" title="#{bundle.ViewTblEstudianteTitle_idAutorizado}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_idMedicamentos}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.idMedicamentos}" title="#{bundle.ViewTblEstudianteTitle_idMedicamentos}"/>
                         <h:outputText value="#{bundle.ViewTblEstudianteLabel_idNivel}"/>
                         <h:outputText value="#{tblEstudianteController.selected.idNivel}" title="#{bundle.ViewTblEstudianteTitle_idNivel}"/>
                     </p:panelGrid>

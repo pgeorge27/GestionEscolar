@@ -12,14 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("tblEstudianteCursosController")
+@ManagedBean(name = "tblEstudianteCursosController")
 @SessionScoped
 public class TblEstudianteCursosController implements Serializable {
 
@@ -109,10 +109,6 @@ public class TblEstudianteCursosController implements Serializable {
         }
     }
 
-    public TblEstudianteCursos getTblEstudianteCursos(java.lang.Integer id) {
-        return getFacade().find(id);
-    }
-
     public List<TblEstudianteCursos> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -131,7 +127,7 @@ public class TblEstudianteCursosController implements Serializable {
             }
             TblEstudianteCursosController controller = (TblEstudianteCursosController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "tblEstudianteCursosController");
-            return controller.getTblEstudianteCursos(getKey(value));
+            return controller.getFacade().find(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {

@@ -1,9 +1,9 @@
 package Vista;
 
-import Entidades.TblRepresentante;
+import Entidades.TblAutorizado;
 import Vista.util.JsfUtil;
 import Vista.util.JsfUtil.PersistAction;
-import Controlador.TblRepresentanteFacade;
+import Controlador.TblAutorizadoFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "tblRepresentanteController")
+@ManagedBean(name = "tblAutorizadoController")
 @SessionScoped
-public class TblRepresentanteController implements Serializable {
+public class TblAutorizadoController implements Serializable {
 
     @EJB
-    private Controlador.TblRepresentanteFacade ejbFacade;
-    private List<TblRepresentante> items = null;
-    private TblRepresentante selected;
+    private Controlador.TblAutorizadoFacade ejbFacade;
+    private List<TblAutorizado> items = null;
+    private TblAutorizado selected;
 
-    public TblRepresentanteController() {
+    public TblAutorizadoController() {
     }
 
-    public TblRepresentante getSelected() {
+    public TblAutorizado getSelected() {
         return selected;
     }
 
-    public void setSelected(TblRepresentante selected) {
+    public void setSelected(TblAutorizado selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class TblRepresentanteController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private TblRepresentanteFacade getFacade() {
+    private TblAutorizadoFacade getFacade() {
         return ejbFacade;
     }
 
-    public TblRepresentante prepareCreate() {
-        selected = new TblRepresentante();
+    public TblAutorizado prepareCreate() {
+        selected = new TblAutorizado();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("TblRepresentanteCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("TblAutorizadoCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("TblRepresentanteUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("TblAutorizadoUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("TblRepresentanteDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("TblAutorizadoDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<TblRepresentante> getItems() {
+    public List<TblAutorizado> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,24 +109,24 @@ public class TblRepresentanteController implements Serializable {
         }
     }
 
-    public List<TblRepresentante> getItemsAvailableSelectMany() {
+    public List<TblAutorizado> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<TblRepresentante> getItemsAvailableSelectOne() {
+    public List<TblAutorizado> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = TblRepresentante.class)
-    public static class TblRepresentanteControllerConverter implements Converter {
+    @FacesConverter(forClass = TblAutorizado.class)
+    public static class TblAutorizadoControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            TblRepresentanteController controller = (TblRepresentanteController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "tblRepresentanteController");
+            TblAutorizadoController controller = (TblAutorizadoController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "tblAutorizadoController");
             return controller.getFacade().find(getKey(value));
         }
 
@@ -147,11 +147,11 @@ public class TblRepresentanteController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof TblRepresentante) {
-                TblRepresentante o = (TblRepresentante) object;
-                return getStringKey(o.getIdRepresentante());
+            if (object instanceof TblAutorizado) {
+                TblAutorizado o = (TblAutorizado) object;
+                return getStringKey(o.getIdAutorizado());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TblRepresentante.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TblAutorizado.class.getName()});
                 return null;
             }
         }

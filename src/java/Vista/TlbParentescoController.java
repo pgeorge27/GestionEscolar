@@ -12,14 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("tlbParentescoController")
+@ManagedBean(name = "tlbParentescoController")
 @SessionScoped
 public class TlbParentescoController implements Serializable {
 
@@ -109,10 +109,6 @@ public class TlbParentescoController implements Serializable {
         }
     }
 
-    public TlbParentesco getTlbParentesco(java.lang.Integer id) {
-        return getFacade().find(id);
-    }
-
     public List<TlbParentesco> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -131,7 +127,7 @@ public class TlbParentescoController implements Serializable {
             }
             TlbParentescoController controller = (TlbParentescoController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "tlbParentescoController");
-            return controller.getTlbParentesco(getKey(value));
+            return controller.getFacade().find(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {

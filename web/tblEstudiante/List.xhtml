@@ -7,14 +7,15 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
+
+
         <ui:define name="title">
-            <h:outputText value="..::Cursos::.."></h:outputText>
+            <h:outputText value="#{bundle.ListTblEstudianteTitle}"></h:outputText>
         </ui:define>
-        
+
         <ui:define name="body">
-            
             <h:form id="TblEstudianteListForm">
-                <p:panel header="Listado de Alumnos">
+                <p:panel header="#{bundle.ListTblEstudianteTitle}">
                     <p:dataTable id="datalist" value="#{tblEstudianteController.items}" var="item"
                                  selectionMode="single" selection="#{tblEstudianteController.selected}"
                                  paginator="true"
@@ -23,9 +24,21 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="viewButton editButton deleteButton"/>
-                        
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idEstudiante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstudiante}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_foto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.foto}"/>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListTblEstudianteTitle_apellidos}"/>
@@ -38,9 +51,15 @@
                             </f:facet>
                             <h:outputText value="#{item.nombres}"/>
                         </p:column>
-                         <p:column>
+                        <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Fecha de Nacimiento"/>
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_lugarNac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lugarNac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_fechNac}"/>
                             </f:facet>
                             <h:outputText value="#{item.fechNac}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -72,9 +91,41 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_foto}"/>
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_status}"/>
                             </f:facet>
-                            <h:outputText value="#{item.foto}"/>
+                            <p:selectBooleanCheckbox value="#{item.status}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_fechRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idRepresentanteM}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRepresentanteM}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idRepresentanteP}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRepresentanteP}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idAutorizado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAutorizado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idMedicamentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedicamentos}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -83,6 +134,7 @@
                             <h:outputText value="#{item.idNivel}"/>
                         </p:column>
                         <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tblEstudianteController.prepareCreate}" update=":TblEstudianteCreateForm" oncomplete="PF('TblEstudianteCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TblEstudianteViewForm" oncomplete="PF('TblEstudianteViewDialog').show()" disabled="#{empty tblEstudianteController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TblEstudianteEditForm" oncomplete="PF('TblEstudianteEditDialog').show()" disabled="#{empty tblEstudianteController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tblEstudianteController.destroy}" update=":growl,datalist" disabled="#{empty tblEstudianteController.selected}"/>
@@ -91,6 +143,7 @@
                 </p:panel>
             </h:form>
 
+            <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
         </ui:define>

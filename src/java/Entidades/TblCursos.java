@@ -8,15 +8,14 @@ package Entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author indra
+ * @author georgeperez
  */
 @Entity
 @Table(name = "tbl_cursos")
@@ -52,8 +51,8 @@ public class TblCursos implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "precio")
     private String precio;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCursos")
-    private List<TblEstudianteCursos> tblEstudianteCursosList;
+    @ManyToMany(mappedBy = "tblCursosList")
+    private List<TblEstudiante> tblEstudianteList;
 
     public TblCursos() {
     }
@@ -93,12 +92,12 @@ public class TblCursos implements Serializable {
     }
 
     @XmlTransient
-    public List<TblEstudianteCursos> getTblEstudianteCursosList() {
-        return tblEstudianteCursosList;
+    public List<TblEstudiante> getTblEstudianteList() {
+        return tblEstudianteList;
     }
 
-    public void setTblEstudianteCursosList(List<TblEstudianteCursos> tblEstudianteCursosList) {
-        this.tblEstudianteCursosList = tblEstudianteCursosList;
+    public void setTblEstudianteList(List<TblEstudiante> tblEstudianteList) {
+        this.tblEstudianteList = tblEstudianteList;
     }
 
     @Override
@@ -123,7 +122,7 @@ public class TblCursos implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TblCursos[ idCurso=" + idCurso + " ]";
+        return nombre;
     }
     
 }

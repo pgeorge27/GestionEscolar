@@ -14,48 +14,36 @@
                     <p:panelGrid columns="2" rendered="#{tblRepresentanteController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_idRepresentante}" for="idRepresentante" />
                         <p:inputText id="idRepresentante" value="#{tblRepresentanteController.selected.idRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_idRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_idRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_apellidosRepresentante}" for="apellidosRepresentante" />
-                        <p:inputText id="apellidosRepresentante" value="#{tblRepresentanteController.selected.apellidosRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_apellidosRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_apellidosRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_nombresRepresentante}" for="nombresRepresentante" />
-                        <p:inputText id="nombresRepresentante" value="#{tblRepresentanteController.selected.nombresRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_nombresRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_nombresRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_edadRepresentante}" for="edadRepresentante" />
-                        <p:inputText id="edadRepresentante" value="#{tblRepresentanteController.selected.edadRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_edadRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_edadRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_estadoCivilRepresentante}" for="estadoCivilRepresentante" />
-                        <p:inputText id="estadoCivilRepresentante" value="#{tblRepresentanteController.selected.estadoCivilRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_estadoCivilRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_estadoCivilRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_cedulaRepresentante}" for="cedulaRepresentante" />
-                        <p:inputText id="cedulaRepresentante" value="#{tblRepresentanteController.selected.cedulaRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_cedulaRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_cedulaRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_nacionalidadRepresentante}" for="nacionalidadRepresentante" />
-                        <p:inputText id="nacionalidadRepresentante" value="#{tblRepresentanteController.selected.nacionalidadRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_nacionalidadRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_nacionalidadRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_fechNacRepresentante}" for="fechNacRepresentante" />
-                        <p:calendar id="fechNacRepresentante" pattern="MM/dd/yyyy" value="#{tblRepresentanteController.selected.fechNacRepresentante}" title="#{bundle.EditTblRepresentanteTitle_fechNacRepresentante}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_fechNacRepresentante}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_dirHabRepresentante}" for="dirHabRepresentante" />
-                        <p:inputText id="dirHabRepresentante" value="#{tblRepresentanteController.selected.dirHabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_dirHabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_dirHabRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_profesionRepresentante}" for="profesionRepresentante" />
-                        <p:inputText id="profesionRepresentante" value="#{tblRepresentanteController.selected.profesionRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_profesionRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_profesionRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_lugarTrabRepresentante}" for="lugarTrabRepresentante" />
-                        <p:inputText id="lugarTrabRepresentante" value="#{tblRepresentanteController.selected.lugarTrabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_lugarTrabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_lugarTrabRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_dirTrabRepresentante}" for="dirTrabRepresentante" />
-                        <p:inputText id="dirTrabRepresentante" value="#{tblRepresentanteController.selected.dirTrabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_dirTrabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_dirTrabRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfTrabRepresentante}" for="tlfTrabRepresentante" />
-                        <p:inputText id="tlfTrabRepresentante" value="#{tblRepresentanteController.selected.tlfTrabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_tlfTrabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfTrabRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfHabRepresentante}" for="tlfHabRepresentante" />
-                        <p:inputText id="tlfHabRepresentante" value="#{tblRepresentanteController.selected.tlfHabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_tlfHabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfHabRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfCelRepresentante}" for="tlfCelRepresentante" />
-                        <p:inputText id="tlfCelRepresentante" value="#{tblRepresentanteController.selected.tlfCelRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_tlfCelRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfCelRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_fotoRepresentante}" for="fotoRepresentante" />
-                        <p:inputText id="fotoRepresentante" value="#{tblRepresentanteController.selected.fotoRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_fotoRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_fotoRepresentante}"/>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_parentesco}" for="parentesco" />
-                        <p:selectOneMenu id="parentesco" value="#{tblRepresentanteController.selected.parentesco}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_parentesco}">
-                            <f:selectItems value="#{tlbParentescoController.itemsAvailableSelectOne}"
-                                           var="parentescoItem"
-                                           itemValue="#{parentescoItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_idEstudiante}" for="idEstudiante" />
-                        <p:selectOneMenu id="idEstudiante" value="#{tblRepresentanteController.selected.idEstudiante}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_idEstudiante}">
-                            <f:selectItems value="#{tblEstudianteController.itemsAvailableSelectOne}"
-                                           var="idEstudianteItem"
-                                           itemValue="#{idEstudianteItem}"/>
-                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{tblRepresentanteController.selected.apellidos}" title="#{bundle.CreateTblRepresentanteTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_apellidos}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{tblRepresentanteController.selected.nombres}" title="#{bundle.CreateTblRepresentanteTitle_nombres}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_edad}" for="edad" />
+                        <p:inputText id="edad" value="#{tblRepresentanteController.selected.edad}" title="#{bundle.CreateTblRepresentanteTitle_edad}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_edad}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_estadoCivil}" for="estadoCivil" />
+                        <p:inputText id="estadoCivil" value="#{tblRepresentanteController.selected.estadoCivil}" title="#{bundle.CreateTblRepresentanteTitle_estadoCivil}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_estadoCivil}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_cedula}" for="cedula" />
+                        <p:inputText id="cedula" value="#{tblRepresentanteController.selected.cedula}" title="#{bundle.CreateTblRepresentanteTitle_cedula}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_cedula}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_nacionalidad}" for="nacionalidad" />
+                        <p:inputText id="nacionalidad" value="#{tblRepresentanteController.selected.nacionalidad}" title="#{bundle.CreateTblRepresentanteTitle_nacionalidad}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_nacionalidad}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_fechNac}" for="fechNac" />
+                        <p:calendar id="fechNac" pattern="MM/dd/yyyy" value="#{tblRepresentanteController.selected.fechNac}" title="#{bundle.EditTblRepresentanteTitle_fechNac}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_fechNac}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_dirHab}" for="dirHab" />
+                        <p:inputText id="dirHab" value="#{tblRepresentanteController.selected.dirHab}" title="#{bundle.CreateTblRepresentanteTitle_dirHab}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_dirHab}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_profesion}" for="profesion" />
+                        <p:inputText id="profesion" value="#{tblRepresentanteController.selected.profesion}" title="#{bundle.CreateTblRepresentanteTitle_profesion}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_profesion}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_lugarTrab}" for="lugarTrab" />
+                        <p:inputText id="lugarTrab" value="#{tblRepresentanteController.selected.lugarTrab}" title="#{bundle.CreateTblRepresentanteTitle_lugarTrab}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_lugarTrab}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_dirTrab}" for="dirTrab" />
+                        <p:inputText id="dirTrab" value="#{tblRepresentanteController.selected.dirTrab}" title="#{bundle.CreateTblRepresentanteTitle_dirTrab}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_dirTrab}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfTrab}" for="tlfTrab" />
+                        <p:inputText id="tlfTrab" value="#{tblRepresentanteController.selected.tlfTrab}" title="#{bundle.CreateTblRepresentanteTitle_tlfTrab}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfTrab}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfHab}" for="tlfHab" />
+                        <p:inputText id="tlfHab" value="#{tblRepresentanteController.selected.tlfHab}" title="#{bundle.CreateTblRepresentanteTitle_tlfHab}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfHab}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfCel}" for="tlfCel" />
+                        <p:inputText id="tlfCel" value="#{tblRepresentanteController.selected.tlfCel}" title="#{bundle.CreateTblRepresentanteTitle_tlfCel}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfCel}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{tblRepresentanteController.selected.foto}" title="#{bundle.CreateTblRepresentanteTitle_foto}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_foto}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tblRepresentanteController.create}" value="#{bundle.Save}" update="display,:TblRepresentanteListForm:datalist,:growl" oncomplete="handleSubmit(args,'TblRepresentanteCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="TblRepresentanteCreateDialog.hide()"/>
