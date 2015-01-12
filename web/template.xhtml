@@ -24,14 +24,14 @@
                     <p:panelMenu style="width:300px">
                         <p:submenu label="Alumnos">
                             <p:menuitem value="Consultar" outcome="/tblEstudiante/List.xhtml" icon="ui-icon-disk" />
-                            <p:menuitem value="Registrar" outcome="/tblEstudiante/Create.xhtml" actionListener="#{tblEstudianteController.prepareCreate}" icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Registrar" outcome="/tblEstudiante/Create.xhtml" icon="ui-icon-arrowrefresh-1-w" />
                         </p:submenu>
                         <p:submenu label="Docentes">
                         </p:submenu>
                         <p:separator />
                         <p:submenu label="Administracion" >
                             <p:menuitem value="Consultar" outcome="/tblEstudiante/List.xhtml" icon="ui-icon-disk" />
-                            <p:menuitem value="Registrar" outcome="/tblEstudiante/Create.xhtml"  icon="ui-icon-arrowrefresh-1-w" />
+                            <p:menuitem value="Registrar" outcome="/tblEstudiante/Create.xhtml" actionListener="#{tblEstudianteController.prepareCreate}" icon="ui-icon-arrowrefresh-1-w" />
                         </p:submenu>
                         <p:submenu label="Cursos" >
                             <p:menuitem value="Consultar" outcome="/tblCursos/List.xhtml" icon="ui-icon-disk" />

@@ -24,7 +24,7 @@
             <p:layoutUnit position="center" >
                 <h:form>     
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
+                    <center>
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="username" value="Username:" />
                         <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
@@ -37,6 +37,7 @@
                                              oncomplete="handleLoginRequest(xhr, status, args)" />
                         </f:facet>  
                     </h:panelGrid>
+                        </center>
 
                 </h:form>
 
