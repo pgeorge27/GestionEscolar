@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-01-2015 a las 14:31:36
+-- Tiempo de generación: 12-01-2015 a las 18:23:01
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.14
 
@@ -25,6 +25,51 @@ USE `gestion_escolar`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `bdv_role`
+--
+
+CREATE TABLE IF NOT EXISTS `bdv_role` (
+`id_role` int(11) NOT NULL,
+  `role_nombre` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `bdv_role`
+--
+
+INSERT INTO `bdv_role` (`id_role`, `role_nombre`) VALUES
+(1, 'ADMINISTRADOR'),
+(2, 'EDITOR'),
+(3, 'CONSULTOR'),
+(4, 'USUARIO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bdv_user_backend`
+--
+
+CREATE TABLE IF NOT EXISTS `bdv_user_backend` (
+`id_user` int(11) NOT NULL,
+  `userBackend` varchar(50) NOT NULL,
+  `contrasenia` varchar(50) NOT NULL,
+  `activo` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bdv_user_roles`
+--
+
+CREATE TABLE IF NOT EXISTS `bdv_user_roles` (
+  `id_user` int(11) NOT NULL,
+  `id_role` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_autorizado`
 --
 
@@ -34,7 +79,14 @@ CREATE TABLE IF NOT EXISTS `tbl_autorizado` (
   `apellido` varchar(150) NOT NULL,
   `foto` varchar(100) DEFAULT NULL,
   `id_parentesco` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_autorizado`
+--
+
+INSERT INTO `tbl_autorizado` (`id_autorizado`, `nombre`, `apellido`, `foto`, `id_parentesco`) VALUES
+(1, '1', '1', '1', 9);
 
 -- --------------------------------------------------------
 
@@ -81,7 +133,14 @@ CREATE TABLE IF NOT EXISTS `tbl_estudiante` (
   `id_medicamentos` int(11) NOT NULL,
   `id_nivel` int(11) NOT NULL,
   `fech_registro` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_estudiante`
+--
+
+INSERT INTO `tbl_estudiante` (`id_estudiante`, `foto`, `apellidos`, `nombres`, `lugar_nac`, `fech_nac`, `edad`, `sexo`, `vacunas`, `peso`, `status`, `id_representante_m`, `id_representante_p`, `id_autorizado`, `id_medicamentos`, `id_nivel`, `fech_registro`) VALUES
+(1, 'asdhgasfg', 'hg', 'hg', 'hg', '2015-01-12', 1, 'FEMENINO', '1', 1, 1, 2, 1, 1, 1, 2, '2015-01-12 11:59:24');
 
 -- --------------------------------------------------------
 
@@ -93,6 +152,15 @@ CREATE TABLE IF NOT EXISTS `tbl_estudiante_cursos` (
   `id_estudiante` int(11) NOT NULL,
   `id_cursos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_estudiante_cursos`
+--
+
+INSERT INTO `tbl_estudiante_cursos` (`id_estudiante`, `id_cursos`) VALUES
+(1, 1),
+(1, 3),
+(1, 4);
 
 -- --------------------------------------------------------
 
@@ -117,7 +185,14 @@ CREATE TABLE IF NOT EXISTS `tbl_medicamentos` (
   `cant_supositorio_picadas` int(2) NOT NULL,
   `periodo_picadas` int(2) NOT NULL,
   `observacion_picadas` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_medicamentos`
+--
+
+INSERT INTO `tbl_medicamentos` (`id_medicamentos`, `medicar_fiebre`, `cant_suspencion_fiebre`, `cant_gota_fiebre`, `cant_jarabe_fiebre`, `cant_supositorio_fiebre`, `periodo_fiebre`, `observacion_fiebre`, `alergico_picadas`, `medicar_picadas`, `cant_suspencion_picadas`, `cant_gota_picadas`, `cant_jarabe_picadas`, `cant_supositorio_picadas`, `periodo_picadas`, `observacion_picadas`) VALUES
+(1, '1', 1, 1, 1, 1, 1, '1', '1', '1', 1, 1, 1, 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -162,7 +237,15 @@ CREATE TABLE IF NOT EXISTS `tbl_representante` (
   `tlf_hab` varchar(20) NOT NULL,
   `tlf_cel` varchar(20) NOT NULL,
   `foto` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_representante`
+--
+
+INSERT INTO `tbl_representante` (`id_representante`, `apellidos`, `nombres`, `edad`, `estado_civil`, `cedula`, `nacionalidad`, `fech_nac`, `dir_hab`, `profesion`, `lugar_trab`, `dir_trab`, `tlf_trab`, `tlf_hab`, `tlf_cel`, `foto`) VALUES
+(1, '1', '1', 1, '1', '1', '1', '2015-01-12', '1', '1', '1', '1', '1', '1', '1', '1'),
+(2, '1', '1', 1, '1', '1', '1', '2015-01-12', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -194,6 +277,24 @@ INSERT INTO `tlb_parentesco` (`id_parentesco`, `nombre`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `bdv_role`
+--
+ALTER TABLE `bdv_role`
+ ADD PRIMARY KEY (`id_role`), ADD UNIQUE KEY `id_role_3` (`id_role`), ADD KEY `id_role` (`id_role`), ADD KEY `id_role_2` (`id_role`);
+
+--
+-- Indices de la tabla `bdv_user_backend`
+--
+ALTER TABLE `bdv_user_backend`
+ ADD PRIMARY KEY (`id_user`), ADD UNIQUE KEY `user` (`userBackend`,`contrasenia`), ADD KEY `id_user` (`id_user`);
+
+--
+-- Indices de la tabla `bdv_user_roles`
+--
+ALTER TABLE `bdv_user_roles`
+ ADD PRIMARY KEY (`id_user`,`id_role`), ADD KEY `id_role` (`id_role`), ADD KEY `id_role_2` (`id_role`), ADD KEY `id_user` (`id_user`,`id_role`);
 
 --
 -- Indices de la tabla `tbl_autorizado`
@@ -248,10 +349,20 @@ ALTER TABLE `tlb_parentesco`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `bdv_role`
+--
+ALTER TABLE `bdv_role`
+MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `bdv_user_backend`
+--
+ALTER TABLE `bdv_user_backend`
+MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `tbl_autorizado`
 --
 ALTER TABLE `tbl_autorizado`
-MODIFY `id_autorizado` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_autorizado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbl_cursos`
 --
@@ -261,12 +372,12 @@ MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT de la tabla `tbl_estudiante`
 --
 ALTER TABLE `tbl_estudiante`
-MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbl_medicamentos`
 --
 ALTER TABLE `tbl_medicamentos`
-MODIFY `id_medicamentos` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_medicamentos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbl_nivel`
 --
@@ -276,7 +387,7 @@ MODIFY `id_nivel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `tbl_representante`
 --
 ALTER TABLE `tbl_representante`
-MODIFY `id_representante` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_representante` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tlb_parentesco`
 --
@@ -285,6 +396,13 @@ MODIFY `id_parentesco` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `bdv_user_roles`
+--
+ALTER TABLE `bdv_user_roles`
+ADD CONSTRAINT `bdv_user_roles_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `bdv_role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `bdv_user_roles_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `bdv_user_backend` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tbl_autorizado`
