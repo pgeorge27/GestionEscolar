@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <p:layoutUnit position="north" size="60" >
+        <ui:insert name="header" />
+        <h:graphicImage value="resources/images/LogoBelenSanjuan.JPG" width="200" height="171" />
+    </p:layoutUnit>
+
+    <h:body>
+
+        <p:layout fullPage="true">
+            <ui:insert name="body" />
+            <p:layoutUnit position="center" >
+                <h:form>     
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+
+                        <h:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                        </f:facet>  
+                    </h:panelGrid>
+
+                </h:form>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="30" >
+                <ui:insert name="footer"/>
+                <center>Inversiones GS Technlogy C.A</center>                
+            </p:layoutUnit>
+
+
+        </p:layout>
+
+    </h:body>
+</html>

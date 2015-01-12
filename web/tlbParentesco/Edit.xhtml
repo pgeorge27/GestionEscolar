@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TlbParentescoEditDlg" widgetVar="TlbParentescoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTlbParentescoTitle}">
+            <h:form id="TlbParentescoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tlbParentescoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTlbParentescoLabel_idParentesco}" for="idParentesco" />
+                        <p:inputText id="idParentesco" value="#{tlbParentescoController.selected.idParentesco}" title="#{bundle.EditTlbParentescoTitle_idParentesco}" required="true" requiredMessage="#{bundle.EditTlbParentescoRequiredMessage_idParentesco}"/>
+                        <p:outputLabel value="#{bundle.EditTlbParentescoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tlbParentescoController.selected.nombre}" title="#{bundle.EditTlbParentescoTitle_nombre}" required="true" requiredMessage="#{bundle.EditTlbParentescoRequiredMessage_nombre}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tlbParentescoController.update}" value="#{bundle.Save}" update="display,:TlbParentescoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TlbParentescoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TlbParentescoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

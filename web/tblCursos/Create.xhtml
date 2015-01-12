@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/template.xhtml">
+        <ui:define name="body">
+            <h:form id="TblCursosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblCursosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTblCursosLabel_idCurso}" for="idCurso" />
+                        <p:inputText id="idCurso" value="#{tblCursosController.selected.idCurso}" title="#{bundle.CreateTblCursosTitle_idCurso}" required="true" requiredMessage="#{bundle.CreateTblCursosRequiredMessage_idCurso}"/>
+                        <p:outputLabel value="#{bundle.CreateTblCursosLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tblCursosController.selected.nombre}" title="#{bundle.CreateTblCursosTitle_nombre}" required="true" requiredMessage="#{bundle.CreateTblCursosRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateTblCursosLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{tblCursosController.selected.precio}" title="#{bundle.CreateTblCursosTitle_precio}" required="true" requiredMessage="#{bundle.CreateTblCursosRequiredMessage_precio}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblCursosController.create}" value="#{bundle.Save}" update="display,:growl" oncomplete="handleSubmit(args,'TblCursosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblCursosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblEstudianteViewDlg" widgetVar="TblEstudianteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTblEstudianteTitle}">
+            <h:form id="TblEstudianteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblEstudianteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_idEstudiante}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.idEstudiante}" title="#{bundle.ViewTblEstudianteTitle_idEstudiante}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_apellidos}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.apellidos}" title="#{bundle.ViewTblEstudianteTitle_apellidos}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_nombres}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.nombres}" title="#{bundle.ViewTblEstudianteTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_lugarNac}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.lugarNac}" title="#{bundle.ViewTblEstudianteTitle_lugarNac}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_fechNac}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.fechNac}" title="#{bundle.ViewTblEstudianteTitle_fechNac}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_edad}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.edad}" title="#{bundle.ViewTblEstudianteTitle_edad}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_sexo}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.sexo}" title="#{bundle.ViewTblEstudianteTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_vacunas}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.vacunas}" title="#{bundle.ViewTblEstudianteTitle_vacunas}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_peso}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.peso}" title="#{bundle.ViewTblEstudianteTitle_peso}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_foto}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.foto}" title="#{bundle.ViewTblEstudianteTitle_foto}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_status}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.status}" title="#{bundle.ViewTblEstudianteTitle_status}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_fechRegistro}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.fechRegistro}" title="#{bundle.ViewTblEstudianteTitle_fechRegistro}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTblEstudianteLabel_idNivel}"/>
+                        <h:outputText value="#{tblEstudianteController.selected.idNivel}" title="#{bundle.ViewTblEstudianteTitle_idNivel}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TblEstudianteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

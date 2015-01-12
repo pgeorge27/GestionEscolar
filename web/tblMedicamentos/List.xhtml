@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblMedicamentosTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="TblMedicamentosListForm">
+                <p:panel header="#{bundle.ListTblMedicamentosTitle}">
+                    <p:dataTable id="datalist" value="#{tblMedicamentosController.items}" var="item"
+                                 selectionMode="single" selection="#{tblMedicamentosController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idMedicamentos}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_idMedicamentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedicamentos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_medicarFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medicarFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantSuspencionFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantSuspencionFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantGotaFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantGotaFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantJarabeFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantJarabeFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantSupositorioFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantSupositorioFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_periodoFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodoFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_observacionFiebre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionFiebre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_alergicoPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alergicoPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_medicarPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medicarPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantSuspencionPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantSuspencionPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantGotaPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantGotaPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantJarabePicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantJarabePicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_cantSupositorioPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantSupositorioPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_periodoPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodoPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_observacionPicadas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionPicadas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblMedicamentosTitle_idEstudiante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstudiante}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tblMedicamentosController.prepareCreate}" update=":TblMedicamentosCreateForm" oncomplete="PF('TblMedicamentosCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TblMedicamentosViewForm" oncomplete="PF('TblMedicamentosViewDialog').show()" disabled="#{empty tblMedicamentosController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TblMedicamentosEditForm" oncomplete="PF('TblMedicamentosEditDialog').show()" disabled="#{empty tblMedicamentosController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tblMedicamentosController.destroy}" update=":growl,datalist" disabled="#{empty tblMedicamentosController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

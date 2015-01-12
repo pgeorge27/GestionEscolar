@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblNivelEditDlg" widgetVar="TblNivelEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTblNivelTitle}">
+            <h:form id="TblNivelEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblNivelController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTblNivelLabel_idNivel}" for="idNivel" />
+                        <p:inputText id="idNivel" value="#{tblNivelController.selected.idNivel}" title="#{bundle.EditTblNivelTitle_idNivel}" required="true" requiredMessage="#{bundle.EditTblNivelRequiredMessage_idNivel}"/>
+                        <p:outputLabel value="#{bundle.EditTblNivelLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tblNivelController.selected.nombre}" title="#{bundle.EditTblNivelTitle_nombre}" required="true" requiredMessage="#{bundle.EditTblNivelRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditTblNivelLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{tblNivelController.selected.precio}" title="#{bundle.EditTblNivelTitle_precio}" required="true" requiredMessage="#{bundle.EditTblNivelRequiredMessage_precio}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblNivelController.update}" value="#{bundle.Save}" update="display,:TblNivelListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TblNivelEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblNivelEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

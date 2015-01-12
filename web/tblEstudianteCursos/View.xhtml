@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblEstudianteCursosViewDlg" widgetVar="TblEstudianteCursosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTblEstudianteCursosTitle}">
+            <h:form id="TblEstudianteCursosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblEstudianteCursosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTblEstudianteCursosLabel_idEstudianteCursos}"/>
+                        <h:outputText value="#{tblEstudianteCursosController.selected.idEstudianteCursos}" title="#{bundle.ViewTblEstudianteCursosTitle_idEstudianteCursos}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteCursosLabel_idCursos}"/>
+                        <h:outputText value="#{tblEstudianteCursosController.selected.idCursos}" title="#{bundle.ViewTblEstudianteCursosTitle_idCursos}"/>
+                        <h:outputText value="#{bundle.ViewTblEstudianteCursosLabel_idEstudiante}"/>
+                        <h:outputText value="#{tblEstudianteCursosController.selected.idEstudiante}" title="#{bundle.ViewTblEstudianteCursosTitle_idEstudiante}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TblEstudianteCursosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

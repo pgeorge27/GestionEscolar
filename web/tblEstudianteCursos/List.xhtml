@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTblEstudianteCursosTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="TblEstudianteCursosListForm">
+                <p:panel header="#{bundle.ListTblEstudianteCursosTitle}">
+                    <p:dataTable id="datalist" value="#{tblEstudianteCursosController.items}" var="item"
+                                 selectionMode="single" selection="#{tblEstudianteCursosController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idEstudianteCursos}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteCursosTitle_idEstudianteCursos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstudianteCursos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteCursosTitle_idCursos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCursos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTblEstudianteCursosTitle_idEstudiante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstudiante}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tblEstudianteCursosController.prepareCreate}" update=":TblEstudianteCursosCreateForm" oncomplete="PF('TblEstudianteCursosCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TblEstudianteCursosViewForm" oncomplete="PF('TblEstudianteCursosViewDialog').show()" disabled="#{empty tblEstudianteCursosController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TblEstudianteCursosEditForm" oncomplete="PF('TblEstudianteCursosEditDialog').show()" disabled="#{empty tblEstudianteCursosController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tblEstudianteCursosController.destroy}" update=":growl,datalist" disabled="#{empty tblEstudianteCursosController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

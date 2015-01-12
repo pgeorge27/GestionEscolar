@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblMedicamentosEditDlg" widgetVar="TblMedicamentosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTblMedicamentosTitle}">
+            <h:form id="TblMedicamentosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblMedicamentosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_idMedicamentos}" for="idMedicamentos" />
+                        <p:inputText id="idMedicamentos" value="#{tblMedicamentosController.selected.idMedicamentos}" title="#{bundle.EditTblMedicamentosTitle_idMedicamentos}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_idMedicamentos}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_medicarFiebre}" for="medicarFiebre" />
+                        <p:inputText id="medicarFiebre" value="#{tblMedicamentosController.selected.medicarFiebre}" title="#{bundle.EditTblMedicamentosTitle_medicarFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_medicarFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantSuspencionFiebre}" for="cantSuspencionFiebre" />
+                        <p:inputText id="cantSuspencionFiebre" value="#{tblMedicamentosController.selected.cantSuspencionFiebre}" title="#{bundle.EditTblMedicamentosTitle_cantSuspencionFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantSuspencionFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantGotaFiebre}" for="cantGotaFiebre" />
+                        <p:inputText id="cantGotaFiebre" value="#{tblMedicamentosController.selected.cantGotaFiebre}" title="#{bundle.EditTblMedicamentosTitle_cantGotaFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantGotaFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantJarabeFiebre}" for="cantJarabeFiebre" />
+                        <p:inputText id="cantJarabeFiebre" value="#{tblMedicamentosController.selected.cantJarabeFiebre}" title="#{bundle.EditTblMedicamentosTitle_cantJarabeFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantJarabeFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantSupositorioFiebre}" for="cantSupositorioFiebre" />
+                        <p:inputText id="cantSupositorioFiebre" value="#{tblMedicamentosController.selected.cantSupositorioFiebre}" title="#{bundle.EditTblMedicamentosTitle_cantSupositorioFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantSupositorioFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_periodoFiebre}" for="periodoFiebre" />
+                        <p:inputText id="periodoFiebre" value="#{tblMedicamentosController.selected.periodoFiebre}" title="#{bundle.EditTblMedicamentosTitle_periodoFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_periodoFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_observacionFiebre}" for="observacionFiebre" />
+                        <p:inputText id="observacionFiebre" value="#{tblMedicamentosController.selected.observacionFiebre}" title="#{bundle.EditTblMedicamentosTitle_observacionFiebre}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_observacionFiebre}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_alergicoPicadas}" for="alergicoPicadas" />
+                        <p:inputText id="alergicoPicadas" value="#{tblMedicamentosController.selected.alergicoPicadas}" title="#{bundle.EditTblMedicamentosTitle_alergicoPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_alergicoPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_medicarPicadas}" for="medicarPicadas" />
+                        <p:inputText id="medicarPicadas" value="#{tblMedicamentosController.selected.medicarPicadas}" title="#{bundle.EditTblMedicamentosTitle_medicarPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_medicarPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantSuspencionPicadas}" for="cantSuspencionPicadas" />
+                        <p:inputText id="cantSuspencionPicadas" value="#{tblMedicamentosController.selected.cantSuspencionPicadas}" title="#{bundle.EditTblMedicamentosTitle_cantSuspencionPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantSuspencionPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantGotaPicadas}" for="cantGotaPicadas" />
+                        <p:inputText id="cantGotaPicadas" value="#{tblMedicamentosController.selected.cantGotaPicadas}" title="#{bundle.EditTblMedicamentosTitle_cantGotaPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantGotaPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantJarabePicadas}" for="cantJarabePicadas" />
+                        <p:inputText id="cantJarabePicadas" value="#{tblMedicamentosController.selected.cantJarabePicadas}" title="#{bundle.EditTblMedicamentosTitle_cantJarabePicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantJarabePicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_cantSupositorioPicadas}" for="cantSupositorioPicadas" />
+                        <p:inputText id="cantSupositorioPicadas" value="#{tblMedicamentosController.selected.cantSupositorioPicadas}" title="#{bundle.EditTblMedicamentosTitle_cantSupositorioPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_cantSupositorioPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_periodoPicadas}" for="periodoPicadas" />
+                        <p:inputText id="periodoPicadas" value="#{tblMedicamentosController.selected.periodoPicadas}" title="#{bundle.EditTblMedicamentosTitle_periodoPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_periodoPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_observacionPicadas}" for="observacionPicadas" />
+                        <p:inputText id="observacionPicadas" value="#{tblMedicamentosController.selected.observacionPicadas}" title="#{bundle.EditTblMedicamentosTitle_observacionPicadas}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_observacionPicadas}"/>
+                        <p:outputLabel value="#{bundle.EditTblMedicamentosLabel_idEstudiante}" for="idEstudiante" />
+                        <p:selectOneMenu id="idEstudiante" value="#{tblMedicamentosController.selected.idEstudiante}" required="true" requiredMessage="#{bundle.EditTblMedicamentosRequiredMessage_idEstudiante}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tblEstudianteController.itemsAvailableSelectOne}"
+                                           var="idEstudianteItem"
+                                           itemValue="#{idEstudianteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblMedicamentosController.update}" value="#{bundle.Save}" update="display,:TblMedicamentosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TblMedicamentosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblMedicamentosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

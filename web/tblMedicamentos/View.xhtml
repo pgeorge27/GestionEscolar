@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblMedicamentosViewDlg" widgetVar="TblMedicamentosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTblMedicamentosTitle}">
+            <h:form id="TblMedicamentosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblMedicamentosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_idMedicamentos}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.idMedicamentos}" title="#{bundle.ViewTblMedicamentosTitle_idMedicamentos}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_medicarFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.medicarFiebre}" title="#{bundle.ViewTblMedicamentosTitle_medicarFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantSuspencionFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantSuspencionFiebre}" title="#{bundle.ViewTblMedicamentosTitle_cantSuspencionFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantGotaFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantGotaFiebre}" title="#{bundle.ViewTblMedicamentosTitle_cantGotaFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantJarabeFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantJarabeFiebre}" title="#{bundle.ViewTblMedicamentosTitle_cantJarabeFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantSupositorioFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantSupositorioFiebre}" title="#{bundle.ViewTblMedicamentosTitle_cantSupositorioFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_periodoFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.periodoFiebre}" title="#{bundle.ViewTblMedicamentosTitle_periodoFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_observacionFiebre}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.observacionFiebre}" title="#{bundle.ViewTblMedicamentosTitle_observacionFiebre}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_alergicoPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.alergicoPicadas}" title="#{bundle.ViewTblMedicamentosTitle_alergicoPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_medicarPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.medicarPicadas}" title="#{bundle.ViewTblMedicamentosTitle_medicarPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantSuspencionPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantSuspencionPicadas}" title="#{bundle.ViewTblMedicamentosTitle_cantSuspencionPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantGotaPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantGotaPicadas}" title="#{bundle.ViewTblMedicamentosTitle_cantGotaPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantJarabePicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantJarabePicadas}" title="#{bundle.ViewTblMedicamentosTitle_cantJarabePicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_cantSupositorioPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.cantSupositorioPicadas}" title="#{bundle.ViewTblMedicamentosTitle_cantSupositorioPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_periodoPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.periodoPicadas}" title="#{bundle.ViewTblMedicamentosTitle_periodoPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_observacionPicadas}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.observacionPicadas}" title="#{bundle.ViewTblMedicamentosTitle_observacionPicadas}"/>
+                        <h:outputText value="#{bundle.ViewTblMedicamentosLabel_idEstudiante}"/>
+                        <h:outputText value="#{tblMedicamentosController.selected.idEstudiante}" title="#{bundle.ViewTblMedicamentosTitle_idEstudiante}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TblMedicamentosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

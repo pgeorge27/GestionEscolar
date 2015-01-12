@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblRepresentanteCreateDlg" widgetVar="TblRepresentanteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTblRepresentanteTitle}">
+            <h:form id="TblRepresentanteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblRepresentanteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_idRepresentante}" for="idRepresentante" />
+                        <p:inputText id="idRepresentante" value="#{tblRepresentanteController.selected.idRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_idRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_idRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_apellidosRepresentante}" for="apellidosRepresentante" />
+                        <p:inputText id="apellidosRepresentante" value="#{tblRepresentanteController.selected.apellidosRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_apellidosRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_apellidosRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_nombresRepresentante}" for="nombresRepresentante" />
+                        <p:inputText id="nombresRepresentante" value="#{tblRepresentanteController.selected.nombresRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_nombresRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_nombresRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_edadRepresentante}" for="edadRepresentante" />
+                        <p:inputText id="edadRepresentante" value="#{tblRepresentanteController.selected.edadRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_edadRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_edadRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_estadoCivilRepresentante}" for="estadoCivilRepresentante" />
+                        <p:inputText id="estadoCivilRepresentante" value="#{tblRepresentanteController.selected.estadoCivilRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_estadoCivilRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_estadoCivilRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_cedulaRepresentante}" for="cedulaRepresentante" />
+                        <p:inputText id="cedulaRepresentante" value="#{tblRepresentanteController.selected.cedulaRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_cedulaRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_cedulaRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_nacionalidadRepresentante}" for="nacionalidadRepresentante" />
+                        <p:inputText id="nacionalidadRepresentante" value="#{tblRepresentanteController.selected.nacionalidadRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_nacionalidadRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_nacionalidadRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_fechNacRepresentante}" for="fechNacRepresentante" />
+                        <p:calendar id="fechNacRepresentante" pattern="MM/dd/yyyy" value="#{tblRepresentanteController.selected.fechNacRepresentante}" title="#{bundle.EditTblRepresentanteTitle_fechNacRepresentante}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_fechNacRepresentante}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_dirHabRepresentante}" for="dirHabRepresentante" />
+                        <p:inputText id="dirHabRepresentante" value="#{tblRepresentanteController.selected.dirHabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_dirHabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_dirHabRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_profesionRepresentante}" for="profesionRepresentante" />
+                        <p:inputText id="profesionRepresentante" value="#{tblRepresentanteController.selected.profesionRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_profesionRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_profesionRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_lugarTrabRepresentante}" for="lugarTrabRepresentante" />
+                        <p:inputText id="lugarTrabRepresentante" value="#{tblRepresentanteController.selected.lugarTrabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_lugarTrabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_lugarTrabRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_dirTrabRepresentante}" for="dirTrabRepresentante" />
+                        <p:inputText id="dirTrabRepresentante" value="#{tblRepresentanteController.selected.dirTrabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_dirTrabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_dirTrabRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfTrabRepresentante}" for="tlfTrabRepresentante" />
+                        <p:inputText id="tlfTrabRepresentante" value="#{tblRepresentanteController.selected.tlfTrabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_tlfTrabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfTrabRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfHabRepresentante}" for="tlfHabRepresentante" />
+                        <p:inputText id="tlfHabRepresentante" value="#{tblRepresentanteController.selected.tlfHabRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_tlfHabRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfHabRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_tlfCelRepresentante}" for="tlfCelRepresentante" />
+                        <p:inputText id="tlfCelRepresentante" value="#{tblRepresentanteController.selected.tlfCelRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_tlfCelRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_tlfCelRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_fotoRepresentante}" for="fotoRepresentante" />
+                        <p:inputText id="fotoRepresentante" value="#{tblRepresentanteController.selected.fotoRepresentante}" title="#{bundle.CreateTblRepresentanteTitle_fotoRepresentante}" required="true" requiredMessage="#{bundle.CreateTblRepresentanteRequiredMessage_fotoRepresentante}"/>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_parentesco}" for="parentesco" />
+                        <p:selectOneMenu id="parentesco" value="#{tblRepresentanteController.selected.parentesco}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_parentesco}">
+                            <f:selectItems value="#{tlbParentescoController.itemsAvailableSelectOne}"
+                                           var="parentescoItem"
+                                           itemValue="#{parentescoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTblRepresentanteLabel_idEstudiante}" for="idEstudiante" />
+                        <p:selectOneMenu id="idEstudiante" value="#{tblRepresentanteController.selected.idEstudiante}" required="true" requiredMessage="#{bundle.EditTblRepresentanteRequiredMessage_idEstudiante}">
+                            <f:selectItems value="#{tblEstudianteController.itemsAvailableSelectOne}"
+                                           var="idEstudianteItem"
+                                           itemValue="#{idEstudianteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblRepresentanteController.create}" value="#{bundle.Save}" update="display,:TblRepresentanteListForm:datalist,:growl" oncomplete="handleSubmit(args,'TblRepresentanteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblRepresentanteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

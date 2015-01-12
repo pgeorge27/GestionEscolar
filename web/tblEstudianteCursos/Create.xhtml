@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblEstudianteCursosCreateDlg" widgetVar="TblEstudianteCursosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTblEstudianteCursosTitle}">
+            <h:form id="TblEstudianteCursosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblEstudianteCursosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTblEstudianteCursosLabel_idEstudianteCursos}" for="idEstudianteCursos" />
+                        <p:inputText id="idEstudianteCursos" value="#{tblEstudianteCursosController.selected.idEstudianteCursos}" title="#{bundle.CreateTblEstudianteCursosTitle_idEstudianteCursos}" required="true" requiredMessage="#{bundle.CreateTblEstudianteCursosRequiredMessage_idEstudianteCursos}"/>
+                        <p:outputLabel value="#{bundle.CreateTblEstudianteCursosLabel_idCursos}" for="idCursos" />
+                        <p:selectOneMenu id="idCursos" value="#{tblEstudianteCursosController.selected.idCursos}" required="true" requiredMessage="#{bundle.EditTblEstudianteCursosRequiredMessage_idCursos}">
+                            <f:selectItems value="#{tblCursosController.itemsAvailableSelectOne}"
+                                           var="idCursosItem"
+                                           itemValue="#{idCursosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTblEstudianteCursosLabel_idEstudiante}" for="idEstudiante" />
+                        <p:selectOneMenu id="idEstudiante" value="#{tblEstudianteCursosController.selected.idEstudiante}" required="true" requiredMessage="#{bundle.EditTblEstudianteCursosRequiredMessage_idEstudiante}">
+                            <f:selectItems value="#{tblEstudianteController.itemsAvailableSelectOne}"
+                                           var="idEstudianteItem"
+                                           itemValue="#{idEstudianteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblEstudianteCursosController.create}" value="#{bundle.Save}" update="display,:TblEstudianteCursosListForm:datalist,:growl" oncomplete="handleSubmit(args,'TblEstudianteCursosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblEstudianteCursosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
