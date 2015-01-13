@@ -11,8 +11,8 @@
     <ui:define name="body">
 
         <!--<p:dialog id="TblEstudianteCreateDlg" widgetVar="TblEstudianteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="{bundle.CreateTblEstudianteTitle}">-->
-        <h:form id="TblEstudianteCreateForm">
-            <h:panelGroup id="display" >
+        <h:form id="TblEstudianteCreateForm" class="#{tblEstudianteController.prepareCreate()}}">
+            <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tblEstudianteController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateTblEstudianteLabel_foto}" for="foto" />
                         <p:inputText id="foto" value="#{tblEstudianteController.selected.foto}" title="#{bundle.CreateTblEstudianteTitle_foto}" required="true" requiredMessage="#{bundle.CreateTblEstudianteRequiredMessage_foto}"/>

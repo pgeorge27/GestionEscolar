@@ -1,0 +1,33 @@
+Editar mensajes en el archivo Bundle
+Pantalla Logout
+
+Base de Datos
+	Definir campos obligatorios.
+
+Login
+	Banner
+	Interactuar con BD
+
+Home 
+	Definir (Pantalla de Bienvenido)
+
+Alumnos
+	Create
+		Implementar el registro por secciones
+		Adjuntar imagen
+		Verificar campo status
+		Crear lista para estado civil
+		Preguntar por Nacionalidades
+
+	List
+		Definir campos a mostrar
+		Filtrar por alumnos activos
+		Metodo para desactivar alumno (Inactivar)
+
+
+Modulo Estudiantes
+Modulo Administracion
+Modulo Cursos
+Modulo Pagos
+Modulo Factura
+Modulo Reportes
