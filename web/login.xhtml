@@ -20,32 +20,33 @@
     <h:body>
 
         <p:layout fullPage="true">
-            <ui:insert name="body" />
+            <ui:insert name="body" />                       
             <p:layoutUnit position="center" >
-                <h:form>     
-                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                
+                <h:form id="loginForm" title="#{bdvUserBackendController.prepareCreate2()}"> 
                     <center>
+                    <H2>BIENVENIDO AL SISTEMA DE INTEGRACIÒN ESCOLAR</H2>    
+                    <p:growl id="growl"  life="2000" />
+                    
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="username" value="Username:" />
-                        <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+                        <p:inputText id="username" value="#{bdvUserBackendController.selected2.userBackend}" required="true" label="username" />
 
                         <h:outputLabel for="password" value="Password:" />
-                        <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+                        <p:password id="password" value="#{bdvUserBackendController.selected2.contrasenia}" required="true" label="password" />
 
                         <f:facet name="footer">
-                            <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
-                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                            <p:commandButton value="Aceptar" action="#{bdvUserBackendController.entrarHomeBackend(bdvUserBackendController.selected2.userBackend,bdvUserBackendController.selected2.contrasenia)}" update="growl,loginForm"  />
                         </f:facet>  
                     </h:panelGrid>
-                        </center>
+                    </center>
 
                 </h:form>
 
             </p:layoutUnit>
 
             <p:layoutUnit position="south" size="30" >
-                <ui:insert name="footer"/>
-                <center>Inversiones GS Technlogy C.A</center>                
+                <p class="footer">Inversiones GS Technlogy C.A</p>          
             </p:layoutUnit>
 
 
