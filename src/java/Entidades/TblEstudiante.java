@@ -129,13 +129,18 @@ public class TblEstudiante implements Serializable {
     private TblNivel idNivel;
 
     public TblEstudiante() {
+        this.vacunas = "NINGUNA";
+        this.foto = "a";
+        this.peso = 10;
         this.fechRegistro = new Date();
+        this.status = true;
         idRepresentanteM = new TblRepresentante();
         idRepresentanteP = new TblRepresentante();
         idAutorizado = new TblAutorizado();
         idMedicamentos = new TblMedicamentos();
         idNivel = new TblNivel();
         tblCursosList = new ArrayList<>();
+        
     }
 
     public TblEstudiante(Integer idEstudiante) {

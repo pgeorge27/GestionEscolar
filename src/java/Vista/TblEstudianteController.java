@@ -4,6 +4,7 @@ import Entidades.TblEstudiante;
 import Vista.util.JsfUtil;
 import Vista.util.JsfUtil.PersistAction;
 import Controlador.TblEstudianteFacade;
+import java.io.IOException;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,9 +16,11 @@ import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean(name = "tblEstudianteController")
 @SessionScoped
@@ -26,6 +29,7 @@ public class TblEstudianteController implements Serializable {
     @EJB
     private Controlador.TblEstudianteFacade ejbFacade;
     private List<TblEstudiante> items = null;
+    private List<TblEstudiante> filteredItems;
     private TblEstudiante selected;
 
     public TblEstudianteController() {
@@ -49,6 +53,14 @@ public class TblEstudianteController implements Serializable {
         return ejbFacade;
     }
 
+    public List<TblEstudiante> getFilteredItems() {
+        return filteredItems;
+    }
+
+    public void setFilteredItems(List<TblEstudiante> filteredItems) {
+        this.filteredItems = filteredItems;
+    }
+
     public TblEstudiante prepareCreate() {
         selected = new TblEstudiante();
         initializeEmbeddableKey();
@@ -60,6 +72,12 @@ public class TblEstudianteController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
+        try {
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "/faces/tblEstudiante/List.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(TblEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void update() {
@@ -67,7 +85,9 @@ public class TblEstudianteController implements Serializable {
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("TblEstudianteDeleted"));
+        this.selected.setStatus(false);
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("TblEstudianteDeleted"));
+//        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("TblEstudianteDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
@@ -76,7 +96,9 @@ public class TblEstudianteController implements Serializable {
 
     public List<TblEstudiante> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            //Obtenemos solos los usuarios con status true
+            items = getFacade().obtenerEstudiantesActivos();
+            //items = getFacade().findAll();
         }
         return items;
     }
@@ -115,6 +137,21 @@ public class TblEstudianteController implements Serializable {
 
     public List<TblEstudiante> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+    
+    public void logOut() {
+        getRequest().getSession().invalidate();
+        this.selected = null;
+        try {
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "/faces/login.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(TblEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private HttpServletRequest getRequest() {
+        return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
     @FacesConverter(forClass = TblEstudiante.class)

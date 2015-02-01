@@ -1,28 +1,34 @@
 Editar mensajes en el archivo Bundle
-Pantalla Logout
+√ Pantalla Logout
 
 Base de Datos
 	Definir campos obligatorios.
 
-Login
-	Banner
-	Interactuar con BD
+√ Login
+√	Banner
+√	Interactuar con BD
+        crear session
 
 Home 
 	Definir (Pantalla de Bienvenido)
+        mantener y eliminar la session
 
 Alumnos
 	Create
-		Implementar el registro por secciones
+√		Implementar el registro por secciones
 		Adjuntar imagen
 		Verificar campo status
 		Crear lista para estado civil
 		Preguntar por Nacionalidades
 
 	List
-		Definir campos a mostrar
-		Filtrar por alumnos activos
-		Metodo para desactivar alumno (Inactivar)
+√		Definir campos a mostrar
+√		Filtrar por alumnos activos
+√		Metodo para desactivar alumno (Inactivar)
+
+Campo para la fecha de nacimiento
+Subir imagenes
+Estudiante agregar foto, peso y verificar los campos seteados.
 
 
 Modulo Estudiantes

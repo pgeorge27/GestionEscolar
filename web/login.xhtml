@@ -35,9 +35,10 @@
                         <h:outputLabel for="password" value="Password:" />
                         <p:password id="password" value="#{bdvUserBackendController.selected2.contrasenia}" required="true" label="password" />
 
-                        <f:facet name="footer">
+                        <p:outputPanel/>
+                        <!--<f:facet name="footer">-->
                             <p:commandButton value="Aceptar" action="#{bdvUserBackendController.entrarHomeBackend(bdvUserBackendController.selected2.userBackend,bdvUserBackendController.selected2.contrasenia)}" update="growl,loginForm"  />
-                        </f:facet>  
+                        <!--</f:facet>-->  
                     </h:panelGrid>
                     </center>
 

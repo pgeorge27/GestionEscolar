@@ -22,6 +22,7 @@
                                  rowKey="#{item.idEstudiante}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 widgetVar="estudianteTable"
                                  >
 
                         <p:ajax event="rowSelect"   update="viewButton editButton deleteButton"/>
@@ -33,47 +34,33 @@
                             </f:facet>
                             <h:outputText value="#{item.idEstudiante}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_foto}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.foto}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_apellidos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.apellidos}"/>
-                        </p:column>
-                        <p:column>
+
+                        <p:column filterBy="#{item.nombres}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListTblEstudianteTitle_nombres}"/>
                             </f:facet>
                             <h:outputText value="#{item.nombres}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.apellidos}" filterMatchMode="contains">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_lugarNac}"/>
+                                <h:outputText value="#{bundle.ListTblEstudianteTitle_apellidos}"/>
                             </f:facet>
-                            <h:outputText value="#{item.lugarNac}"/>
+                            <h:outputText value="#{item.apellidos}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_fechNac}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fechNac}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.edad}" filterMatchMode="equals">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListTblEstudianteTitle_edad}"/>
                             </f:facet>
                             <h:outputText value="#{item.edad}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_sexo}"/>
+
+                        <p:column filterBy="#{item.sexo}" headerText="#{bundle.ListTblEstudianteTitle_sexo}" filterMatchMode="exact">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('estudianteTable').filter()" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                                    <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
+                                    <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
+                                </p:selectOneMenu>
                             </f:facet>
                             <h:outputText value="#{item.sexo}"/>
                         </p:column>
@@ -89,49 +76,15 @@
                             </f:facet>
                             <h:outputText value="#{item.peso}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_status}"/>
+                        
+                        <p:column filterBy="#{item.idNivel.nombre}" headerText="#{bundle.ListTblEstudianteTitle_idNivel}" filterMatchMode="exact">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('estudianteTable').filter()" >
+                                    <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{tblNivelController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
                             </f:facet>
-                            <p:selectBooleanCheckbox value="#{item.status}" disabled="true"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_fechRegistro}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fechRegistro}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idRepresentanteM}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idRepresentanteM}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idRepresentanteP}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idRepresentanteP}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idAutorizado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idAutorizado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idMedicamentos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idMedicamentos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTblEstudianteTitle_idNivel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idNivel}"/>
+                            <h:outputText value="#{item.idNivel.nombre}"/>
                         </p:column>
                         <f:facet name="footer">
                             <!--<p:commandButton id="createButton" icon="ui-icon-plus"   value="{bundle.Create}" actionListener="{tblEstudianteController.prepareCreate}" update=":TblEstudianteCreateForm" oncomplete="PF('TblEstudianteCreateDialog').show()"/>-->

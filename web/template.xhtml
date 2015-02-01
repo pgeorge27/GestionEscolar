@@ -22,7 +22,7 @@
         <p:layout fullPage="true">
             <p:layoutUnit position="west" >
                 <h:form id="menuForm">
-                    <p:panelMenu style="width:300px">
+                    <p:panelMenu style="width:180px">
                         <p:submenu label="Estudiantes">
                             <p:menuitem value="Consultar" outcome="/tblEstudiante/List.xhtml" icon="ui-icon-disk" />
                             <p:menuitem value="Registrar" outcome="/tblEstudiante/Create.xhtml" icon="ui-icon-arrowrefresh-1-w" />
@@ -37,6 +37,9 @@
                         <p:submenu label="Cursos" >
                             <p:menuitem value="Consultar" outcome="/tblCursos/List.xhtml" icon="ui-icon-disk" />
                             <p:menuitem value="Registrar" outcome="/tblCursos/Create.xhtml"  icon="ui-icon-arrowrefresh-1-w" />                      
+                        </p:submenu>
+                         <p:submenu label="Opciones" >
+                             <p:menuitem value="Salir" actionListener="#{tblEstudianteController.logOut()}"  />
                         </p:submenu>
 
                     </p:panelMenu>
