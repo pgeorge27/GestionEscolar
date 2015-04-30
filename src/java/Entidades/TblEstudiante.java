@@ -130,10 +130,11 @@ public class TblEstudiante implements Serializable {
 
     public TblEstudiante() {
         this.vacunas = "NINGUNA";
-        this.foto = "a";
+        this.foto = "none.jpg";
         this.peso = 10;
         this.fechRegistro = new Date();
         this.status = true;
+        
         idRepresentanteM = new TblRepresentante();
         idRepresentanteP = new TblRepresentante();
         idAutorizado = new TblAutorizado();

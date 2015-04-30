@@ -9,49 +9,56 @@
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="custom.css"/>
+        <h:outputStylesheet library="css" name="login.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
     </h:head>
 
-    <p:layoutUnit position="north" size="60" >
-        <ui:insert name="header" />
-        <h:graphicImage value="resources/images/LogoBelenSanjuan.png" width="200" height="171" />
-    </p:layoutUnit>
+    <!--<p:layoutUnit position="north" size="60" >-->
+        <!--<ui:insert name="header" />-->
+        
+    <!--</p:layoutUnit>-->
 
     <h:body>
+        <!--<h:graphicImage value="resources/images/LogoBelenSanjuan.png" width="200" height="171" />-->
 
-        <p:layout fullPage="true">
-            <ui:insert name="body" />                       
-            <p:layoutUnit position="center" >
-                
+        <!--<p:layout fullPage="true">-->
+            <!--<ui:insert name="body" />-->                       
+            <!--<p:layoutUnit position="center" >-->
+
                 <h:form id="loginForm" title="#{bdvUserBackendController.prepareCreate2()}"> 
-                    <center>
-                    <H2>BIENVENIDO AL SISTEMA DE INTEGRACIÒN ESCOLAR</H2>    
-                    <p:growl id="growl"  life="2000" />
-                    
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="username" value="Username:" />
-                        <p:inputText id="username" value="#{bdvUserBackendController.selected2.userBackend}" required="true" label="username" />
+                    <div class="container">
+                        <div class="login">
+                            <p:growl id="growl"  life="2000" />
+                            <H2>INTEGRACIÓN ESCOLAR</H2>    
 
-                        <h:outputLabel for="password" value="Password:" />
-                        <p:password id="password" value="#{bdvUserBackendController.selected2.contrasenia}" required="true" label="password" />
+                            <p><p:inputText type="text" value="#{bdvUserBackendController.selected2.userBackend}" placeholder="Usuario" required="true" label="username" /></p>
+                            <p><p:password id="password" value="#{bdvUserBackendController.selected2.contrasenia}" placeholder="Contraseña" required="true" label="password" /></p>
+                            <p class="remember_me">
+                                <label>
+                                    <input type="checkbox" name="remember_me" id="remember_me"/>
+                                        Recuerdame 
+                                </label>
+                            </p>
+                            <p class="submit"><p:commandButton value="Aceptar" action="#{bdvUserBackendController.entrarHomeBackend(bdvUserBackendController.selected2.userBackend,bdvUserBackendController.selected2.contrasenia)}" update="growl,loginForm"  /></p>
 
-                        <p:outputPanel/>
-                        <!--<f:facet name="footer">-->
-                            <p:commandButton value="Aceptar" action="#{bdvUserBackendController.entrarHomeBackend(bdvUserBackendController.selected2.userBackend,bdvUserBackendController.selected2.contrasenia)}" update="growl,loginForm"  />
-                        <!--</f:facet>-->  
-                    </h:panelGrid>
-                    </center>
+                        </div>
+
+                        <div class="login-help">
+                            <p>Olvido su contraseña? <a href="#">Click aquí para recuperar</a>.</p>
+                        </div>
+                    </div>
 
                 </h:form>
 
-            </p:layoutUnit>
+            <!--</p:layoutUnit>-->
 
-            <p:layoutUnit position="south" size="30" >
-                <p class="footer">Inversiones GS Technlogy C.A</p>          
-            </p:layoutUnit>
+            <!--<p:layoutUnit position="south" size="30" >-->
+                <!--<p class="footer">Inversiones GS Technlogy C.A</p>-->          
+            <!--</p:layoutUnit>-->
 
 
-        </p:layout>
+        <!--</p:layout>-->
 
     </h:body>
 </html>

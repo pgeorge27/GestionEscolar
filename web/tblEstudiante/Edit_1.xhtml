@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TblEstudianteEditDlg" widgetVar="TblEstudianteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTblEstudianteTitle}">
+            <h:form id="TblEstudianteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tblEstudianteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_idEstudiante}" for="idEstudiante" />
+                        <p:inputText id="idEstudiante" value="#{tblEstudianteController.selected.idEstudiante}" title="#{bundle.EditTblEstudianteTitle_idEstudiante}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_idEstudiante}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{tblEstudianteController.selected.foto}" title="#{bundle.EditTblEstudianteTitle_foto}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_foto}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{tblEstudianteController.selected.apellidos}" title="#{bundle.EditTblEstudianteTitle_apellidos}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_apellidos}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{tblEstudianteController.selected.nombres}" title="#{bundle.EditTblEstudianteTitle_nombres}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_lugarNac}" for="lugarNac" />
+                        <p:inputText id="lugarNac" value="#{tblEstudianteController.selected.lugarNac}" title="#{bundle.EditTblEstudianteTitle_lugarNac}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_lugarNac}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_fechNac}" for="fechNac" />
+                        <p:calendar id="fechNac" pattern="MM/dd/yyyy" value="#{tblEstudianteController.selected.fechNac}" title="#{bundle.EditTblEstudianteTitle_fechNac}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_fechNac}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_edad}" for="edad" />
+                        <p:inputText id="edad" value="#{tblEstudianteController.selected.edad}" title="#{bundle.EditTblEstudianteTitle_edad}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_edad}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{tblEstudianteController.selected.sexo}" title="#{bundle.EditTblEstudianteTitle_sexo}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_sexo}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_vacunas}" for="vacunas" />
+                        <p:inputText id="vacunas" value="#{tblEstudianteController.selected.vacunas}" title="#{bundle.EditTblEstudianteTitle_vacunas}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_vacunas}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_peso}" for="peso" />
+                        <p:inputText id="peso" value="#{tblEstudianteController.selected.peso}" title="#{bundle.EditTblEstudianteTitle_peso}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_peso}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_status}" for="status" />
+                        <p:selectBooleanCheckbox id="status" value="#{tblEstudianteController.selected.status}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_status}"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_fechRegistro}" for="fechRegistro" />
+                        <p:calendar id="fechRegistro" pattern="MM/dd/yyyy HH:mm:ss" value="#{tblEstudianteController.selected.fechRegistro}" title="#{bundle.EditTblEstudianteTitle_fechRegistro}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_idRepresentanteM}" for="idRepresentanteM" />
+                        <p:selectOneMenu id="idRepresentanteM" value="#{tblEstudianteController.selected.idRepresentanteM}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_idRepresentanteM}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tblRepresentanteController.itemsAvailableSelectOne}"
+                                           var="idRepresentanteMItem"
+                                           itemValue="#{idRepresentanteMItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_idRepresentanteP}" for="idRepresentanteP" />
+                        <p:selectOneMenu id="idRepresentanteP" value="#{tblEstudianteController.selected.idRepresentanteP}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_idRepresentanteP}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tblRepresentanteController.itemsAvailableSelectOne}"
+                                           var="idRepresentantePItem"
+                                           itemValue="#{idRepresentantePItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_idAutorizado}" for="idAutorizado" />
+                        <p:selectOneMenu id="idAutorizado" value="#{tblEstudianteController.selected.idAutorizado}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_idAutorizado}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tblAutorizadoController.itemsAvailableSelectOne}"
+                                           var="idAutorizadoItem"
+                                           itemValue="#{idAutorizadoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_idMedicamentos}" for="idMedicamentos" />
+                        <p:selectOneMenu id="idMedicamentos" value="#{tblEstudianteController.selected.idMedicamentos}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_idMedicamentos}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tblMedicamentosController.itemsAvailableSelectOne}"
+                                           var="idMedicamentosItem"
+                                           itemValue="#{idMedicamentosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTblEstudianteLabel_idNivel}" for="idNivel" />
+                        <p:selectOneMenu id="idNivel" value="#{tblEstudianteController.selected.idNivel}" required="true" requiredMessage="#{bundle.EditTblEstudianteRequiredMessage_idNivel}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tblNivelController.itemsAvailableSelectOne}"
+                                           var="idNivelItem"
+                                           itemValue="#{idNivelItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tblEstudianteController.update}" value="#{bundle.Save}" update="display,:TblEstudianteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TblEstudianteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TblEstudianteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

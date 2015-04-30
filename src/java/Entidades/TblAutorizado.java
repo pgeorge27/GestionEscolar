@@ -65,7 +65,7 @@ public class TblAutorizado implements Serializable {
     private TlbParentesco idParentesco;
 
     public TblAutorizado() {
-        //idParentesco = new TlbParentesco();
+        this.foto = "none.jpg";
     }
 
     public TblAutorizado(Integer idAutorizado) {

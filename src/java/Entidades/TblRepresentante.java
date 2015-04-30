@@ -138,6 +138,7 @@ public class TblRepresentante implements Serializable {
     private List<TblEstudiante> tblEstudianteList1;
 
     public TblRepresentante() {
+        this.foto = "none.jpg";
     }
 
     public TblRepresentante(Integer idRepresentante) {

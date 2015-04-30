@@ -4,7 +4,11 @@ import Entidades.TblEstudiante;
 import Vista.util.JsfUtil;
 import Vista.util.JsfUtil.PersistAction;
 import Controlador.TblEstudianteFacade;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,6 +25,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean(name = "tblEstudianteController")
 @SessionScoped
@@ -31,7 +37,44 @@ public class TblEstudianteController implements Serializable {
     private List<TblEstudiante> items = null;
     private List<TblEstudiante> filteredItems;
     private TblEstudiante selected;
+    private String destination = ResourceBundle.getBundle("/BundleUpload").getString("Destino");
+    private UploadedFile imgAlumno;
+    private UploadedFile imgRepreM;
+    private UploadedFile imgRepreP;
+    private UploadedFile imgAutorizado;
 
+    public UploadedFile getImgAlumno() {
+        return imgAlumno;
+    }
+
+    public void setImgAlumno(UploadedFile imgAlumno) {
+        this.imgAlumno = imgAlumno;
+    }
+
+    public UploadedFile getImgRepreM() {
+        return imgRepreM;
+    }
+
+    public void setImgRepreM(UploadedFile imgRepreM) {
+        this.imgRepreM = imgRepreM;
+    }
+
+    public UploadedFile getImgRepreP() {
+        return imgRepreP;
+    }
+
+    public void setImgRepreP(UploadedFile imgRepreP) {
+        this.imgRepreP = imgRepreP;
+    }
+
+    public UploadedFile getImgAutorizado() {
+        return imgAutorizado;
+    }
+
+    public void setImgAutorizado(UploadedFile imgAutorizado) {
+        this.imgAutorizado = imgAutorizado;
+    }
+    
     public TblEstudianteController() {
     }
 
@@ -67,7 +110,7 @@ public class TblEstudianteController implements Serializable {
         return selected;
     }
 
-    public void create() {
+    public void create() {        
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("TblEstudianteCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -78,10 +121,11 @@ public class TblEstudianteController implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(TblEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("TblEstudianteUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("TblEstudianteUpdated"));        
     }
 
     public void destroy() {
@@ -148,6 +192,94 @@ public class TblEstudianteController implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(TblEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void uploadImgAlumno(FileUploadEvent event) {
+        try {
+            int i = 0;
+            while (validaArchivo(i + "_" + event.getFile().getFileName())) {i++;}
+            copyFile(i + "_" + event.getFile().getFileName(), event.getFile().getInputstream()); 
+            selected.setFoto(i + "_" + event.getFile().getFileName());
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ImgUpload"));
+        } catch (IOException ex) {
+            Logger.getLogger(TblEstudianteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void uploadImgMadre(FileUploadEvent event) {
+        try {
+            int i = 0;
+            while (validaArchivo(i + "_" + event.getFile().getFileName())) {i++;}
+            copyFile(i + "_" + event.getFile().getFileName(), event.getFile().getInputstream()); 
+            selected.getIdRepresentanteM().setFoto(i + "_" + event.getFile().getFileName());
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ImgUpload"));
+        } catch (IOException ex) {
+            Logger.getLogger(TblEstudianteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void uploadImgPadre(FileUploadEvent event) {
+        try {
+            int i = 0;
+            while (validaArchivo(i + "_" + event.getFile().getFileName())) {i++;}
+            copyFile(i + "_" + event.getFile().getFileName(), event.getFile().getInputstream()); 
+            selected.getIdRepresentanteP().setFoto(i + "_" + event.getFile().getFileName());
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ImgUpload"));
+        } catch (IOException ex) {
+            Logger.getLogger(TblEstudianteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void uploadImgAutorizado(FileUploadEvent event) {
+        try {
+            int i = 0;
+            while (validaArchivo(i + "_" + event.getFile().getFileName())) {i++;}
+            copyFile(i + "_" + event.getFile().getFileName(), event.getFile().getInputstream()); 
+            selected.getIdAutorizado().setFoto(i + "_" + event.getFile().getFileName());
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ImgUpload"));
+        } catch (IOException ex) {
+            Logger.getLogger(TblEstudianteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void guardar(){
+//         try {
+//            System.out.println("Guardar " + destination + "alumno."+FilenameUtils.getExtension(imgAlumno.getFileName()));
+//            selected.setFoto("alumno."+FilenameUtils.getExtension(imgAlumno.getFileName()));
+//            copyFile("alumno."+FilenameUtils.getExtension(imgAlumno.getFileName()), imgAlumno.getInputstream());
+//            selected.getIdRepresentanteM().setFoto("repreM."+FilenameUtils.getExtension(imgRepreM.getFileName()));
+//            copyFile("repreM."+FilenameUtils.getExtension(imgRepreM.getFileName()), imgRepreM.getInputstream());
+//            selected.getIdRepresentanteP().setFoto("repreP."+FilenameUtils.getExtension(imgRepreP.getFileName()));
+//            copyFile("repreP."+FilenameUtils.getExtension(imgRepreP.getFileName()), imgRepreP.getInputstream());
+//            selected.getIdAutorizado().setFoto("autorizado."+FilenameUtils.getExtension(imgAutorizado.getFileName()));
+//            copyFile("autorizado."+FilenameUtils.getExtension(imgAutorizado.getFileName()), imgAutorizado.getInputstream());
+//        } catch (IOException e) {}
+        create();
+    }
+    
+    public void copyFile(String fileName, InputStream in) {
+        try {
+            // write the inputStream to a FileOutputStream
+            OutputStream out = new FileOutputStream(new File(destination + fileName));
+            int read = 0;
+            byte[] bytes = new byte[1024];
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            in.close();
+            out.flush();
+            out.close();
+            System.out.println("Archivo Creado!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean validaArchivo(String archivo) {
+        File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino") + archivo);
+//        Seteamos el destino de los archivos que seran subidos
+//        destination = ResourceBundle.getBundle("/BundleUpload").getString("Destino") ;
+        return files.exists();
     }
     
     private HttpServletRequest getRequest() {

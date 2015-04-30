@@ -15,6 +15,7 @@
 
         <ui:define name="body">
             <h:form id="TblEstudianteListForm">
+                <p:growl id="growl" autoUpdate="true" showDetail="true" sticky="false" /> 
                 <p:panel header="#{bundle.ListTblEstudianteTitle}">
                     <p:dataTable id="datalist" value="#{tblEstudianteController.items}" var="item"
                                  selectionMode="single" selection="#{tblEstudianteController.selected}"
@@ -88,8 +89,8 @@
                         </p:column>
                         <f:facet name="footer">
                             <!--<p:commandButton id="createButton" icon="ui-icon-plus"   value="{bundle.Create}" actionListener="{tblEstudianteController.prepareCreate}" update=":TblEstudianteCreateForm" oncomplete="PF('TblEstudianteCreateDialog').show()"/>-->
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TblEstudianteViewForm" oncomplete="PF('TblEstudianteViewDialog').show()" disabled="#{empty tblEstudianteController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TblEstudianteEditForm" oncomplete="PF('TblEstudianteEditDialog').show()" disabled="#{empty tblEstudianteController.selected}"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" disabled="#{empty tblEstudianteController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" ajax="false" action="Edit" disabled="#{empty tblEstudianteController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tblEstudianteController.destroy}" update=":growl,datalist" disabled="#{empty tblEstudianteController.selected}"/>
                         </f:facet>
                     </p:dataTable>
@@ -97,7 +98,7 @@
             </h:form>
 
             <!--<ui:include src="Create.xhtml"/>-->
-            <ui:include src="Edit.xhtml"/>
+            <!--<ui:include src="Edit.xhtml"/>-->
             <ui:include src="View.xhtml"/>
         </ui:define>
     </ui:composition>
