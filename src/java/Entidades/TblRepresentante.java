@@ -58,83 +58,53 @@ public class TblRepresentante implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_representante")
     private Integer idRepresentante;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
     @Column(name = "apellidos")
     private String apellidos;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
     @Column(name = "nombres")
     private String nombres;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "edad")
     private int edad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "estado_civil")
     private String estadoCivil;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "cedula")
     private String cedula;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "nacionalidad")
-    private String nacionalidad;
-    @Basic(optional = false)
-    @NotNull
+    private String nacionalidad; 
     @Column(name = "fech_nac")
     @Temporal(TemporalType.DATE)
     private Date fechNac;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
     @Column(name = "dir_hab")
     private String dirHab;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "profesion")
     private String profesion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
     @Column(name = "lugar_trab")
     private String lugarTrab;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
     @Column(name = "dir_trab")
     private String dirTrab;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "tlf_trab")
     private String tlfTrab;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "tlf_hab")
     private String tlfHab;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "tlf_cel")
     private String tlfCel;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "foto")
     private String foto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRepresentanteM")
+    @OneToMany(mappedBy = "idRepresentanteM")
     private List<TblEstudiante> tblEstudianteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRepresentanteP")
+    @OneToMany(mappedBy = "idRepresentanteP")
     private List<TblEstudiante> tblEstudianteList1;
 
     public TblRepresentante() {

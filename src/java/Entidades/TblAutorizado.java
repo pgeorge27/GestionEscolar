@@ -42,26 +42,21 @@ public class TblAutorizado implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id_autorizado")
     private Integer idAutorizado;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
     @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
     @Column(name = "apellido")
     private String apellido;
     @Size(max = 100)
     @Column(name = "foto")
     private String foto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAutorizado")
+    @OneToMany(mappedBy = "idAutorizado")
     private List<TblEstudiante> tblEstudianteList;
     @JoinColumn(name = "id_parentesco", referencedColumnName = "id_parentesco")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private TlbParentesco idParentesco;
 
     public TblAutorizado() {

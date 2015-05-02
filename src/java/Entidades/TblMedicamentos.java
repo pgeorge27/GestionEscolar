@@ -60,64 +60,38 @@ public class TblMedicamentos implements Serializable {
     @Size(min = 1, max = 250)
     @Column(name = "medicar_fiebre")
     private String medicarFiebre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_suspencion_fiebre")
     private int cantSuspencionFiebre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_gota_fiebre")
     private int cantGotaFiebre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_jarabe_fiebre")
     private int cantJarabeFiebre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_supositorio_fiebre")
     private int cantSupositorioFiebre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "periodo_fiebre")
     private int periodoFiebre;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
     @Column(name = "observacion_fiebre")
     private String observacionFiebre;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 2)
+    @Size(max = 2)
     @Column(name = "alergico_picadas")
     private String alergicoPicadas;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
     @Column(name = "medicar_picadas")
     private String medicarPicadas;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_suspencion_picadas")
     private int cantSuspencionPicadas;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_gota_picadas")
     private int cantGotaPicadas;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_jarabe_picadas")
     private int cantJarabePicadas;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "cant_supositorio_picadas")
     private int cantSupositorioPicadas;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "periodo_picadas")
     private int periodoPicadas;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
     @Column(name = "observacion_picadas")
     private String observacionPicadas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMedicamentos")

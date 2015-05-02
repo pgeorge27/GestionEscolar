@@ -18,3 +18,12 @@ and open the template in the editor.
 .ui-wizard-step-title {
     font-size: 1rem !important;
 }
+
+.someCssClassName {
+    background-image: url(resources/images/LogoBelenSanjuan.png)
+}
+
+/*body{
+    max-width: 1024px;
+    margin: 5px auto !important;
+}*/

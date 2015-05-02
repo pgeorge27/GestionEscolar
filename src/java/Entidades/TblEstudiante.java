@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -113,13 +114,13 @@ public class TblEstudiante implements Serializable {
     @ManyToMany
     private List<TblCursos> tblCursosList;
     @JoinColumn(name = "id_representante_m", referencedColumnName = "id_representante")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade=CascadeType.ALL, optional = false)
     private TblRepresentante idRepresentanteM;
     @JoinColumn(name = "id_representante_p", referencedColumnName = "id_representante")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade=CascadeType.ALL, optional = false)
     private TblRepresentante idRepresentanteP;
     @JoinColumn(name = "id_autorizado", referencedColumnName = "id_autorizado")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade=CascadeType.ALL, optional = false)
     private TblAutorizado idAutorizado;
     @JoinColumn(name = "id_medicamentos", referencedColumnName = "id_medicamentos")
     @ManyToOne(optional = false)

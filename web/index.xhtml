@@ -8,26 +8,41 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <title><ui:insert name="title">..::INTEGRACIÓN ESCOLAR::..</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="custom.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
     </h:head>
-    
-    
-    
+
+
+
     <ui:define name="body">
-    
-        <H2>BIENVENIDO : Sarah Rengel</H2>
-        
+
+        <H2>BIENVENIDO : xxxx xxx</H2>
+
         <h3>En esta aplicación se manejara las solicitudes de inscripciones, reinscripciones, constancias de estudio y otros procesos 
-        para una integración escolar eficaz.</h3>
-        
-        
-        <br /> 
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <br />
-        <h:link outcome="login.xhtml" value="login" />
-        
+            para una integración escolar eficaz.</h3>
+
+        <h:form>
+            
+<!--            <p:commandLink action="/faces/tblEstudiante/List.xhtml" ajax="false" title="hola">
+                <h:graphicImage value="../resources/images/LogoBelenSanjuan.png"  width="200" height="171" />
+            </p:commandLink>
+
+            <p:commandLink action="/faces/tblEstudiante/List.xhtml" ajax="false" title="hola">
+                <h:graphicImage value="../resources/images/LogoBelenSanjuan.png"  width="200" height="171" />
+            </p:commandLink>
+
+            <p:commandLink action="/faces/tblEstudiante/List.xhtml" ajax="false" title="hola">
+                <h:graphicImage value="../resources/images/LogoBelenSanjuan.png"  width="200" height="171" />
+            </p:commandLink>
+
+            <p:commandLink action="/faces/tblCursos/List.xhtml" ajax="false" title="hola">
+                <h:graphicImage value="../resources/images/LogoBelenSanjuan.png"  width="200" height="171" />
+            </p:commandLink>-->
+
+        </h:form>
+
     </ui:define>
-    
+
 </ui:composition>
